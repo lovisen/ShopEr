@@ -10,11 +10,13 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Data.SqlClient;
+using System.Data.Common;
+
 
 /// <summary>
 /// Summary description for DataAccess
 /// </summary>
-public class DataAccess
+public static class DataAccess
 {
     // executes a command and returns the results as a DataTable object
     public static DataTable ExecuteSelectCommand(DbCommand command)
