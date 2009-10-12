@@ -1,0 +1,54 @@
+﻿<%@ Master Language="VB" CodeFile="Admin.master.vb" Inherits="Admin" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Admin</title>
+    <link href="CSS/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/jqueryslidemenu.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+   
+
+    <form id="form2" runat="server">
+    <div id="wrapper">
+        <div id="logo">
+        </div>
+        <div id="meny">
+            <div id="myslidemenu" class="jqueryslidemenu">
+                <ul>
+                    <li><a href="Default.aspx">Start</a></li>
+                    <li><a href="Registation.aspx">Registrera</a></li>
+                    <li><a href="#">Kundservice</a></li>
+                    <li><a href="#">Om webbshopen</a></li>
+                    <li><a href="#">Nyhetsbrev</a></li>
+                    <li><a href="#">Beställning</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li style="padding:7px; margin-left:165px;">
+                        <asp:Label ID="lblInloggadSom" runat="server" Text="Inloggad som: Admin"> 
+                            <asp:Button ID="btbLogOut" runat="server" Text="Logga ut" /></asp:Label></li>    
+                </ul>
+            </div>
+        </div>
+        <br />
+        <div id="category">
+            MENY<br />
+            <li><a href="Adminproduct.aspx">Produkthantering</a></li>
+            <li><a href="Admincustomer.aspx">Kundhantering</a></li>
+            <li><a href="AdminOrder.aspx">Orderhantering</a></li>
+            <li><a href="AdminStatic.aspx">Statistik</a></li>
+</div>
+            
+            
+        <div id="contex" style="width:900px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    </form>
+
+</body>
+</html>
