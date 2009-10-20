@@ -21,8 +21,8 @@ public class ShopErConfiguration
     //Konstruktorn
     static ShopErConfiguration()
     {
-        dbConnectionString = ConfigurationManager.ConnectionStrings["ShopErConnection"].ConnectionString;
-        dbProviderName = ConfigurationManager.ConnectionStrings["ShopErConnection"].ProviderName;
+        //dbConnectionString = ConfigurationManager.ConnectionStrings["ShopErConnection"].ConnectionString;
+        //dbProviderName = ConfigurationManager.ConnectionStrings["ShopErConnection"].ProviderName;
     }
 
     //Returnerar connectionstringen från databasen

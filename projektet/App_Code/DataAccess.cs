@@ -49,10 +49,10 @@ public static class DataAccess
         string dataProviderName = ShopErConfiguration.DbProviderName;
 
         //hämta connectionstring
-        string connnectionString = ShopErConfiguration.DbConnectionString;
+        string connnectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=\"|DataDirectory|\\ShopEr.mdf\";Integrated Security=True;User Instance=True";
 
         //göra en ny data provider factory
-        DbProviderFactory factory = DbProviderFactories.GetFactory(dataProviderName);
+        DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
 
         //hämta databas conn object
         DbConnection conn = factory.CreateConnection();
