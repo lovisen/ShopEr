@@ -80,7 +80,7 @@ public class ProductManager : IProductManager
         inc.Description = true;
         inc.Discount = true;
         inc.Featured = false;
-        inc.Id = false;
+        inc.Id = true;
         inc.Images = true;
         inc.Name = true;
         inc.ShowOnPage = false;
