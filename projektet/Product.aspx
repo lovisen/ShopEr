@@ -56,8 +56,10 @@
                 <asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' />
                 <br />
                 <br />
+                
+                
                 <a href=""><img alt="Köp" src="images/kop.png" /></a>
-                <a href=""><img alt="Köp" src="images/info.png" /></a>
+                <a href="ProductDetail.aspx?Product=<%# Eval("Id") %>"><img alt="Köp" src="images/info.png" /></a>
             </td>
         </ItemTemplate>
     </asp:ListView>
