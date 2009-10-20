@@ -71,7 +71,7 @@ public class ProductManager : IProductManager
         DbCommand comm = DataAccess.CreateCommand();
         comm.CommandType = CommandType.Text;
 
-        comm.CommandText = "SELECT Amount, Description, Discount, Featured, Id, Name, Price, FROM Product WHERE Id = @Id";
+        comm.CommandText = "SELECT Amount, Description, Discount, Featured, Id, Name, Price FROM Product WHERE Id = @Id";
 
         comm.CreateAndAddParameter("@Id", id, DbType.Int32);
 
@@ -126,6 +126,10 @@ public class ProductManager : IProductManager
         DataTable table = DataAccess.ExecuteSelectCommand(comm);
 
         IncludeToFill inc;
+        inc.Amount = false;
+        inc.Discount = false;
+        inc.ShowOnPage = false;
+        inc.Featured = false;
         inc.Description = true;
         inc.Id = true;
         inc.Images = true;
