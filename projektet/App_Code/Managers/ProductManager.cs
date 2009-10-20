@@ -69,8 +69,6 @@ public class ProductManager : IProductManager
     public ProductItem GetProductById(int id)
     {
         DbCommand comm = DataAccess.CreateCommand();
-        comm.CommandType = CommandType.Text;
-
         comm.CommandText = "SELECT Amount, Description, Discount, Featured, Id, Name, Price FROM Product WHERE Id = @Id";
 
         comm.CreateAndAddParameter("@Id", id, DbType.Int32);
@@ -94,8 +92,6 @@ public class ProductManager : IProductManager
     public List<ProductItem> GetAllProducts()
     {
         DbCommand comm = DataAccess.CreateCommand();
-        comm.CommandType = CommandType.Text;
-
         comm.CommandText = "SELECT * FROM Product";
 
         DataTable table = DataAccess.ExecuteSelectCommand(comm);
@@ -117,7 +113,6 @@ public class ProductManager : IProductManager
     public List<ProductItem> GetProductsByCategoryId(long SubCategoryId)
     {
         DbCommand comm = DataAccess.CreateCommand();
-        comm.CommandType = CommandType.Text;
 
         comm.CommandText = "SELECT Description, Id, Name, Price FROM Product WHERE SubCategory = @SubCategoryId";
 
@@ -146,8 +141,30 @@ public class ProductManager : IProductManager
     #region IProductManager Members
 
 
-    public List<ProductItem> SearchProducts()
+    public List<ProductItem> SearchProducts(string searchString)
     {
+        DbCommand comm = DataAccess.CreateCommand();
+
+        comm.CommandText = "SELECT Id, Name, Price FROM Product WHERE Name LIKE @searchString OR Description LIKE @searchString";
+
+        comm.CreateAndAddParameter("@searchString", "%" + searchString + "%", DbType.String);
+
+        DataTable table = DataAccess.ExecuteSelectCommand(comm);
+
+        IncludeToFill inc;
+        inc.Amount = false;
+        inc.Discount = false;
+        inc.ShowOnPage = false;
+        inc.Featured = false;
+        inc.Description = false;
+        inc.Id = true;
+        inc.Images = false;
+        inc.Name = true;
+        inc.Price = true;
+
+        return FillAll(table, inc);
+
+
         throw new NotImplementedException();
     }
 
