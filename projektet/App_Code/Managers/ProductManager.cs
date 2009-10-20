@@ -114,6 +114,27 @@ public class ProductManager : IProductManager
         return FillAll(table, inc);
     }
 
+    public List<ProductItem> GetProductsByCategoryId(long SubCategoryId)
+    {
+        DbCommand comm = DataAccess.CreateCommand();
+        comm.CommandType = CommandType.Text;
+
+        comm.CommandText = "SELECT Description, Id, Name, Price FROM Product WHERE SubCategory = @SubCategoryId";
+
+        comm.CreateAndAddParameter("@SubCategoryID", SubCategoryId, DbType.Int64);
+
+        DataTable table = DataAccess.ExecuteSelectCommand(comm);
+
+        IncludeToFill inc;
+        inc.Description = true;
+        inc.Id = true;
+        inc.Images = true;
+        inc.Name = true;
+        inc.Price = true;
+
+        return FillAll(table, inc);
+    }
+
 
 
 
