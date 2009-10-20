@@ -59,10 +59,16 @@
                 
                 
                 <a href=""><img alt="Köp" src="images/kop.png" /></a>
-                <a href="ProductDetail.aspx?Product=<%# Eval("Id") %>"><img alt="Köp" src="images/info.png" /></a>
+                <a href="ProductDetail.aspx?Product=<%# Eval("Id") %>&Category=<%#Request.QueryString["Category"] %>"><img alt="Köp" src="images/info.png" /></a>
+
             </td>
         </ItemTemplate>
     </asp:ListView>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetProductsByCategoryId"
-        TypeName="ProductManager"></asp:ObjectDataSource>
+        TypeName="ProductManager">
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="SubCategoryId" 
+                QueryStringField="SubCategory" Type="Int64" />
+        </SelectParameters>
+</asp:ObjectDataSource>
 </asp:Content>
