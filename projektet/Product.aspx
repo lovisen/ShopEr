@@ -62,5 +62,10 @@
         </ItemTemplate>
     </asp:ListView>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetProductsByCategoryId"
-        TypeName="ProductManager"></asp:ObjectDataSource>
+        TypeName="ProductManager">
+        <SelectParameters>
+            <asp:QueryStringParameter DefaultValue="0" Name="SubCategoryId" 
+                QueryStringField="SubCategory" Type="Int64" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
 </asp:Content>
