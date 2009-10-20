@@ -33,7 +33,7 @@
                      <br />
                      Images:
 <%--                     <asp:Label ID="ImagesLabel" runat="server" Text='<%# Eval("Images") %>' />--%>
-                      <img src='images/Product/<%# Eval("Images[0].ImageURL") %>' alt="" style="padding: 20px;" />
+                      <%--<img src='images/Product/<%# Eval("Images[0].ImageURL") %>' alt="" style="padding: 20px;" />--%>
                      
                      <br />
                      Id:
