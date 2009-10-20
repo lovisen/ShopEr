@@ -52,7 +52,7 @@ public static class DataAccess
         string connnectionString = ShopErConfiguration.DbConnectionString;
 
         //göra en ny data provider factory
-        DbProviderFactory factory = DbProviderFactories.GetFactory(dataProviderName);
+        DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
 
         //hämta databas conn object
         DbConnection conn = factory.CreateConnection();
@@ -61,7 +61,7 @@ public static class DataAccess
         //gör databas spec comm obj
         DbCommand comm = conn.CreateCommand();
         //set the command type to stored procedure
-        comm.CommandType = CommandType.StoredProcedure;
+        comm.CommandType = CommandType.Text;
         //returns the command object
         return comm;
 
