@@ -18,12 +18,72 @@
         
         style="padding: 50px; border-style: dotted; border-width: 2px; width: 600px; margin-left: 100px; margin-top: 50px;" 
         title="Produkthantering">
-        <tr>
+         <tr>
             <td dir="ltr">
-                <asp:Label ID="Label1" runat="server" Text="Produkt namn:"></asp:Label>
+                <asp:Label ID="lblMessageTitle" Visible="false" runat="server" Text="Meddelande:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TextBox1" runat="server" Width="300px"></asp:TextBox>
+                <asp:Label ID="lblMessageText" Visible="false" runat="server" ></asp:Label>
+
+               </td>
+        </tr>
+        <tr>
+            <td dir="ltr">
+                <asp:Label ID="Label1" runat="server" Text="Produktnamn:"></asp:Label>
+            </td>
+            <td>
+                
+                <asp:TextBox ID="txtName" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ErrorMessage="*" ControlToValidate="txtName">*</asp:RequiredFieldValidator>
+                <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                    ErrorMessage="minst två tecken" ControlToValidate="txtName" 
+                    MinimumValue="100" MaximumValue="2"></asp:RangeValidator>
+                </td>
+        </tr>
+             <tr>
+            <td dir="ltr">
+                <asp:Label ID="Label4" runat="server" Text="Antal produkter i lager:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtAmount" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
+                    ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" 
+                    ControlToValidate="txtAmount">*</asp:RequiredFieldValidator> 
+            
+                </td>
+        </tr>
+                 <tr>
+            <td dir="ltr">
+                <asp:Label ID="Label5" runat="server" Text="Rabatt:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtDiscount" runat="server" Width="300px"></asp:TextBox>
+            </td>
+        </tr>
+                 <tr>
+            <td dir="ltr">
+                <asp:Label ID="Label6" runat="server" Text="Pris:"></asp:Label>
+            </td>
+            <td>
+                <asp:TextBox ID="txtPrice" runat="server" Width="300px"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" 
+                    ErrorMessage="*" ControlToValidate="txtPrice">*</asp:RequiredFieldValidator></td>
+        </tr>
+                   <tr>
+            <td dir="ltr">
+                <asp:Label ID="Label7" runat="server" Text="Featured:"></asp:Label>
+            </td>
+            <td>
+                <asp:CheckBox ID="cbYesFeature" runat="server" Text="Ja"/>
+                <asp:CheckBox ID="cbNoFeature" runat="server" Text="Nej"/>
+            </td>
+        </tr>
+           <tr>
+            <td dir="ltr">
+                <asp:Label ID="Label8" runat="server" Text="Visa på sida:"></asp:Label>
+            </td>
+            <td>
+                <asp:CheckBox ID="cbYesShowOnPage" runat="server" Text="Ja"/>
+                <asp:CheckBox ID="cbNoShowOnPage" runat="server" Text="Nej"/>
             </td>
         </tr>
         <tr>
@@ -31,7 +91,17 @@
                 <asp:Label ID="Label2" runat="server" Text="Kategori:"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="DropDownList1" runat="server">
+                <asp:DropDownList ID="ddlCategory" runat="server" 
+                    onselectedindexchanged="ddlCategory_SelectedIndexChanged">
+                </asp:DropDownList>
+            </td>
+        </tr>
+          <tr>
+            <td>
+                <asp:Label ID="Label9" runat="server" Text="Underkategori:"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlSubCategory" runat="server">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -40,7 +110,7 @@
                 <asp:Label ID="Label3" runat="server" Text="Beskrivning:"></asp:Label>
             </td>
             <td>
-                <asp:TextBox ID="TextBox2" runat="server" Height="134px" TextMode="MultiLine" 
+                <asp:TextBox ID="txtDescription" runat="server" Height="134px" TextMode="MultiLine" 
                     Width="300px"></asp:TextBox>
             </td>
         </tr>
@@ -48,12 +118,14 @@
             <td class="style2">
                 Välj bild:</td>
             <td class="style2">
-                <asp:FileUpload ID="FileUpload1" runat="server" />
-            </td>
+                <asp:FileUpload ID="imageUpload" runat="server" />
+              </td>
         </tr>
+        
         <tr>
             <td>
-                <asp:Button ID="btnInsertProduct" runat="server" Text="Lägg till produkt" />
+                <asp:Button ID="btnInsertProduct" runat="server" Text="Lägg till produkt" 
+                    onclick="btnInsertProduct_Click" />
             </td>
             <td>
                 &nbsp;</td>

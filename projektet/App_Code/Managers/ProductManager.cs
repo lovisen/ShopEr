@@ -131,15 +131,15 @@ public class ProductManager : IProductManager
         throw new NotImplementedException();
     }
 
-    public void InsertProduct()
-    {
-        throw new NotImplementedException();
-    }
-
     public void UpdateProduct()
     {
         throw new NotImplementedException();
     }
 
+    public bool InsertProduct(ProductLINQ insertProduct)
+    {
+        throw new NotImplementedException();
+    }
     #endregion
+
 }

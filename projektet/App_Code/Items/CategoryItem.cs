@@ -14,7 +14,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Summary description for CategoryItem
 /// </summary>
-public class CategoryItem : BaseStructure<int>
+public class CategoryItem : BaseStructure<long>
 {
     public string CategoryName { get; set; }
     public List<CategoryItem> SubCategories { get; set; }

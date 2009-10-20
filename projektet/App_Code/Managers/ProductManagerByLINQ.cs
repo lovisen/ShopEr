@@ -15,12 +15,12 @@ using System.Xml.Linq;
 /// </summary>
 public class ProductManagerByLINQ : IProductManager
 {
-	public ProductManagerByLINQ()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    public ProductManagerByLINQ()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
 
 
 
@@ -47,9 +47,21 @@ public class ProductManagerByLINQ : IProductManager
         throw new NotImplementedException();
     }
 
-    public void InsertProduct()
+    public bool InsertProduct(ProductLINQ insertProduct)
     {
-        throw new NotImplementedException();
+        ShopErDataContext db = new ShopErDataContext();
+        try
+        {
+            db.ProductLINQs.InsertOnSubmit((ProductLINQ)insertProduct);
+            db.SubmitChanges();
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+            throw;
+
+        }
     }
 
     public void UpdateProduct()
@@ -58,4 +70,5 @@ public class ProductManagerByLINQ : IProductManager
     }
 
     #endregion
+
 }

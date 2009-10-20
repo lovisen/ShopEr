@@ -3,7 +3,7 @@
   <DataContextMoniker Name="/ShopErDataContext" />
   <nestedChildShapes>
     <classShape Id="3148f466-24f9-464f-9825-6c3175e5f680" absoluteBounds="1.5, 2, 2, 2.24658447265625">
-      <DataClassMoniker Name="/ShopErDataContext/Product" />
+      <DataClassMoniker Name="/ShopErDataContext/ProductLINQ" />
       <nestedChildShapes>
         <elementListCompartment Id="3e3c31e1-9e0c-4171-b4c2-31b5c13eaf2c" absoluteBounds="1.5150000000000001, 2.46, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>

@@ -29,9 +29,9 @@ public partial class ShopErDataContext : System.Data.Linq.DataContext
 	
   #region Extensibility Method Definitions
   partial void OnCreated();
-  partial void InsertProduct(Product instance);
-  partial void UpdateProduct(Product instance);
-  partial void DeleteProduct(Product instance);
+  partial void InsertProductLINQ(ProductLINQ instance);
+  partial void UpdateProductLINQ(ProductLINQ instance);
+  partial void DeleteProductLINQ(ProductLINQ instance);
   partial void InsertProductImage(ProductImage instance);
   partial void UpdateProductImage(ProductImage instance);
   partial void DeleteProductImage(ProductImage instance);
@@ -67,11 +67,11 @@ public partial class ShopErDataContext : System.Data.Linq.DataContext
 		OnCreated();
 	}
 	
-	public System.Data.Linq.Table<Product> Products
+	public System.Data.Linq.Table<ProductLINQ> ProductLINQs
 	{
 		get
 		{
-			return this.GetTable<Product>();
+			return this.GetTable<ProductLINQ>();
 		}
 	}
 	
@@ -85,7 +85,7 @@ public partial class ShopErDataContext : System.Data.Linq.DataContext
 }
 
 [Table(Name="dbo.Product")]
-public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
+public partial class ProductLINQ : INotifyPropertyChanging, INotifyPropertyChanged
 {
 	
 	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -132,7 +132,7 @@ public partial class Product : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnSubCategoryChanged();
     #endregion
 	
-	public Product()
+	public ProductLINQ()
 	{
 		OnCreated();
 	}
