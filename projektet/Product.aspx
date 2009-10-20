@@ -63,6 +63,6 @@
             </td>
         </ItemTemplate>
     </asp:ListView>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetAllProducts"
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="GetProductsByCategoryId"
         TypeName="ProductManager"></asp:ObjectDataSource>
 </asp:Content>
