@@ -1,0 +1,96 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<%@ Register src="UserControls/Categories.ascx" tagname="Categories" tagprefix="uc1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>ShopEr</title>
+    <link href="CSS/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="CSS/jqueryslidemenu.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form2" runat="server">
+    <div id="wrapper">
+        <div id="logo">
+        </div>
+        <div id="meny">
+            <div id="myslidemenu" class="jqueryslidemenu">
+                <ul>
+                    <li><a href="Default.aspx">Start</a></li>
+                    <li><a href="Registation.aspx">Registrera</a></li>
+                    <li><a href="#">Kundservice</a></li>
+                    <li><a href="#">Om webbshopen</a></li>
+                    <li><a href="#">Nyhetsbrev</a></li>
+                    <li><a href="#">Beställning</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li style="margin-top: 4px; margin-left: 35px;">
+                        <asp:TextBox ID="TextBox1" runat="server" Width="140px" Text="Användarnamn"> </asp:TextBox></li>
+                    <li style="margin-top: 4px; margin-left: 5px;">
+                        <asp:TextBox ID="TextBox2" runat="server" Width="140px" Text="Lösenord" TextMode="Password"></asp:TextBox></li>
+                    <li style="margin-top: 3px; margin-left: 5px;">
+                        <asp:Button ID="btnLogin" runat="server" Text="Logga in" OnClick="btnLogin_Click" /></li>
+                </ul>
+            </div>
+        </div>
+        <br />
+        <div id="category">
+            KATEGORIER<br /><br />
+            <uc1:Categories 
+                ID="Categories1" runat="server" />
+            <br />
+
+            <img alt="" style="padding: 20px;" src="images/rockweb.jpg" />
+            <img alt="" style="padding: 20px;" src="images/festival.jpg" />
+        </div>
+        <div id="contex">
+            <img alt="sök" src="images/sok.jpg" /><br />
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="rightcolumn">
+            VARUKORG<br />
+            <br />
+            <table style="margin-left: 7px; color: Black;" frame="box" bgcolor="#FFFF99">
+                <tr>
+                    <td>
+                        &nbsp; Produktnamn:
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp; Antal:
+                        <table>
+                            <tr>
+                                <td>
+                                    Summa:
+                                </td>
+                                <td>
+                                Frakt kostnad:
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp; <b>Totalt: 0 kr</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 5px;">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/images/ShopList.png" />
+                        <asp:Label ID="lblMessage" runat="server" ForeColor="Black" Text="Varukorgen är tom"></asp:Label>
+                        <div style="float: right;">
+                            <asp:Button ID="btnPay" runat="server" Text="Till Kassan" BackColor="#FF3300" OnClick="btnPay_Click" /></div>
+                    </td>
+                </tr>
+            </table>
+            <img alt="" src="images/payment.gif" style="float: right; padding: 5px;" /><br />
+            <img alt="apa" style="padding: 35px;" src="images/apa.gif" />
+        </div>
+    </div>
+    </form>
+</body>
+</html>
