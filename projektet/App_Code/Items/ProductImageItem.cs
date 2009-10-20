@@ -13,7 +13,7 @@ using System.Xml.Linq;
 /// <summary>
 /// Summary description for ProductImageItem
 /// </summary>
-public class ProductImageItem : BaseStructure<int>
+public class ProductImageItem : BaseStructure<long>
 {
     public string ImageURL { get; set; }
 

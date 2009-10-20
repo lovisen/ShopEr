@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/ShopErMaster.master" AutoEventWireup="false" CodeFile="Order.aspx.vb" Inherits="Order" title="ShopEr Order" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Order.aspx.cs" Inherits="Order" Title="ShopEr Order" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -21,8 +21,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-
-    <a href="#" style="color:Green">Ange rabattkod</a><br /><br />
+ <a href="#" style="color:Green">Ange rabattkod</a><br /><br />
 <h1>Personuppgifter</h1> 
         <style="background-color: #CCFFCC" />
     <table bgcolor="#CCFFCC" class="style2" width="650px;">
@@ -161,10 +160,9 @@
     <a href="#" style="color:Red">Faktura</a>/
     <a href="#" style="color:Red">Delbetalning</a>/
     <a href="#" style="color:Red">Betal-/Kreditkort</a>
-    <br /><br /><br /><br />
+    <br /><br /><br />
     <a href="#"><img src="images/order-abort.gif" border="0" /></a>
     <a href="#"><img src="images/order-confirm.gif" border="0" 
         style="float: right" /></a>
-  
 </asp:Content>
 

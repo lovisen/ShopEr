@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" MasterPageFile="~/Admin.master" AutoEventWireup="false" CodeFile="Admincustomer.aspx.vb" Inherits="Admincustomer" title="Admin Kundhantering" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="Admincustomer.aspx.cs" Inherits="Admincustomer" Title="ShopEr Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
@@ -112,5 +112,6 @@
                         <asp:TextBox ID="txtSearch" runat="server" Height="23px" Width="263px"></asp:TextBox> 
         <asp:Button ID="btbSearch" runat="server" Text="SÖK KUND" Height="28px" /></li>
     <b style="margin-left:65px; padding:25px;">Resultat:</b>
+
 </asp:Content>
 

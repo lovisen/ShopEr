@@ -34,7 +34,7 @@ public class ProductImageManager
     public static ProductImageItem FillOne(DataRow r, IncludeToFill inc)
     {
         ProductImageItem p = new ProductImageItem();
-        if (inc.Id) p.Id = (int)r["Id"];
+        if (inc.Id) p.Id = (long)r["Id"];
         if (inc.ImageUrl) p.ImageURL = (string)r["ImageURL"];
         return p;
     }
@@ -52,7 +52,7 @@ public class ProductImageManager
     }
 
 
-    public static List<ProductImageItem> GetImagesForProduct(int productId)
+    public static List<ProductImageItem> GetImagesForProduct(long productId)
     {
         DbCommand comm = DataAccess.CreateCommand();
         comm.CommandType = CommandType.Text;

@@ -14,7 +14,7 @@ using System.Collections.Generic;
 /// <summary>
 /// Summary description for ProductItem
 /// </summary>
-public class ProductItem : BaseStructure<int>
+public class ProductItem : BaseStructure<long>
 {
 	public ProductItem()
 	{

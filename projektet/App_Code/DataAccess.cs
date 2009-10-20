@@ -49,7 +49,7 @@ public static class DataAccess
         string dataProviderName = ShopErConfiguration.DbProviderName;
 
         //hämta connectionstring
-        string connnectionString = "Data Source=.\\SQLEXPRESS;AttachDbFilename=\"|DataDirectory|\\ShopEr.mdf\";Integrated Security=True;User Instance=True";
+        string connnectionString = ShopErConfiguration.DbConnectionString;
 
         //göra en ny data provider factory
         DbProviderFactory factory = DbProviderFactories.GetFactory("System.Data.SqlClient");
@@ -61,7 +61,7 @@ public static class DataAccess
         //gör databas spec comm obj
         DbCommand comm = conn.CreateCommand();
         //set the command type to stored procedure
-        comm.CommandType = CommandType.StoredProcedure;
+        comm.CommandType = CommandType.Text;
         //returns the command object
         return comm;
 

@@ -1,4 +1,4 @@
-Ôªø<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <%@ Register src="UserControls/Categories.ascx" tagname="Categories" tagprefix="uc1" %>
 
@@ -24,12 +24,12 @@
                     <li><a href="#">Kundservice</a></li>
                     <li><a href="#">Om webbshopen</a></li>
                     <li><a href="#">Nyhetsbrev</a></li>
-                    <li><a href="#">Best√§llning</a></li>
+                    <li><a href="#">Best‰llning</a></li>
                     <li><a href="#">Kontakt</a></li>
                     <li style="margin-top: 4px; margin-left: 35px;">
-                        <asp:TextBox ID="TextBox1" runat="server" Width="140px" Text="Anv√§ndarnamn"> </asp:TextBox></li>
+                        <asp:TextBox ID="TextBox1" runat="server" Width="140px" Text="Anv‰ndarnamn"> </asp:TextBox></li>
                     <li style="margin-top: 4px; margin-left: 5px;">
-                        <asp:TextBox ID="TextBox2" runat="server" Width="140px" Text="L√∂senord" TextMode="Password"></asp:TextBox></li>
+                        <asp:TextBox ID="TextBox2" runat="server" Width="140px" Text="Lˆsenord" TextMode="Password"></asp:TextBox></li>
                     <li style="margin-top: 3px; margin-left: 5px;">
                         <asp:Button ID="btnLogin" runat="server" Text="Logga in" OnClick="btnLogin_Click" /></li>
                 </ul>
@@ -46,7 +46,7 @@
             <img alt="" style="padding: 20px;" src="images/festival.jpg" />
         </div>
         <div id="contex">
-            <img alt="s√∂k" src="images/sok.jpg" /><br />
+            <img alt="sˆk" src="images/sok.jpg" /><br />
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
@@ -81,7 +81,7 @@
                 <tr>
                     <td style="padding: 5px;">
                         <asp:Image ID="Image1" runat="server" ImageUrl="~/images/ShopList.png" />
-                        <asp:Label ID="lblMessage" runat="server" ForeColor="Black" Text="Varukorgen √§r tom"></asp:Label>
+                        <asp:Label ID="lblMessage" runat="server" ForeColor="Black" Text="Varukorgen ‰r tom"></asp:Label>
                         <div style="float: right;">
                             <asp:Button ID="btnPay" runat="server" Text="Till Kassan" BackColor="#FF3300" OnClick="btnPay_Click" /></div>
                     </td>

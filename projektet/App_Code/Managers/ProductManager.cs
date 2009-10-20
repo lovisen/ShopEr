@@ -43,9 +43,9 @@ public class ProductManager
         ProductItem p = new ProductItem();
         if (i.Amount) p.Amount = (int)r["Amount"];
         if (i.Description) p.Description = (string)r["Description"];
-        if (i.Discount) p.Discount = (int)r["Discount"];
+        if (i.Discount) p.Discount = (byte)r["Discount"];
         if (i.Featured) p.Featured = (bool)r["Featured"];
-        if (i.Id) p.Id = (int)r["Id"];
+        if (i.Id) p.Id = (long)r["Id"];
         if (i.Images) p.Images = ProductImageManager.GetImagesForProduct(p.Id);
         if (i.Name) p.Name = (string)r["Name"];
         if (i.Price) p.Price = (int)r["Price"];
