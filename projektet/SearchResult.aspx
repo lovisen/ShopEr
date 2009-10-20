@@ -18,7 +18,7 @@
         <ItemTemplate>
             <tr>
                 <td>
-                    <a href="Product.aspx?Product=<%# Eval("Id") %>"><%# Eval("Name") %></a>
+                    <a href="ProductDetail.aspx?Product=<%# Eval("Id") %>"><%# Eval("Name") %></a>
                 </td>
                 <td>
                     <%# Eval("Price") %> kr
