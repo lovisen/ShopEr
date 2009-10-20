@@ -15,9 +15,9 @@ using System.Data.Common;
 /// <summary>
 /// Summary description for ProductManager
 /// </summary>
-public class ProductManager
+public class ProductManager : IProductManager
 {
-	public ProductManager()
+	public ProductManager() 
 	{
 		//
 		// TODO: Add constructor logic here
@@ -66,7 +66,7 @@ public class ProductManager
         return list;
     }
 
-    public static ProductItem GetProductById(int id)
+    public ProductItem GetProductById(int id)
     {
         DbCommand comm = DataAccess.CreateCommand();
         comm.CommandType = CommandType.Text;
@@ -91,7 +91,7 @@ public class ProductManager
         return FillOne(table.Rows[0], inc);
     }
 
-    public static List<ProductItem> GetAllProducts()
+    public List<ProductItem> GetAllProducts()
     {
         DbCommand comm = DataAccess.CreateCommand();
         comm.CommandType = CommandType.Text;
@@ -115,4 +115,31 @@ public class ProductManager
     }
 
 
+
+
+
+    #region IProductManager Members
+
+
+    public List<ProductItem> SearchProducts()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void GetAllFeaturedProducts()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void InsertProduct()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UpdateProduct()
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion
 }

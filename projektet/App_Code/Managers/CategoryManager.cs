@@ -38,7 +38,7 @@ public class CategoryManager
     {
         CategoryItem c = new CategoryItem();
 
-        if (inc.Id) c.Id = (int)r["Id"];
+        if (inc.Id) c.Id = (long)r["Id"];
         if (inc.CategoryName) c.CategoryName = (string)r["Name"];
         if (inc.SubCategory) c.SubCategories = GetChildCategories(c.Id);
 
@@ -89,7 +89,7 @@ public class CategoryManager
         return FillOne(table.Rows[0], inc);
     }
 
-    public static List<CategoryItem> GetChildCategories(int parentCategoryId)
+    public static List<CategoryItem> GetChildCategories(long parentCategoryId)
     {
         DbCommand comm = DataAccess.CreateCommand();
         comm.CommandType = CommandType.Text;

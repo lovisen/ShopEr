@@ -12,17 +12,15 @@ using System.Xml.Linq;
 using System.Collections.Generic;
 
 /// <summary>
-/// Summary description for CategoryItem
+/// Interface for ProductManagers
 /// </summary>
-public class CategoryItem : BaseStructure<long>
+public interface IProductManager
 {
-    public string CategoryName { get; set; }
-    public List<CategoryItem> SubCategories { get; set; }
-    
-	public CategoryItem()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
-}
+     List<ProductItem> GetAllProducts();
+     ProductItem GetProductById(int id);
+     List<ProductItem> SearchProducts();
+    void GetAllFeaturedProducts();
+    void InsertProduct();
+    void UpdateProduct();
+
+   }

@@ -2,10 +2,15 @@
 
 <% foreach(CategoryItem c in CategoryManager.GetCategories()){ %>
         
-    <a href="Product.aspx"><%= c.CategoryName %></a>
-    <% foreach (CategoryItem cc in c.SubCategories){ %>
+    <a href="<%= ResolveUrl("~/Product.aspx?Category=" + c.Id)%>"><%= c.CategoryName %></a>
+    <% if (Request.QueryString["Category"] == c.Id.ToString())
+       { %>
+    <% foreach (CategoryItem cc in c.SubCategories)
+       { %>
     <br />
-       -<a href=""><%= cc.CategoryName %></a>
-    <% } %>
+       -<a href="<%= ResolveUrl("~/Product.aspx?Category=" + c.Id + "&SubCategory=" + cc.Id)%>"><%= cc.CategoryName%></a>
+    <% }
+       }%>
+    
     <br />
 <%} %>
