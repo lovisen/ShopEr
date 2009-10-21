@@ -26,12 +26,14 @@
                     <li><a href="#">Nyhetsbrev</a></li>
                     <li><a href="#">Beställning</a></li>
                     <li><a href="#">Kontakt</a></li>
-                    <li style="margin-top: 4px; margin-left: 35px;">
-                        <asp:TextBox ID="TextBox1" runat="server" Width="140px" Text="Användarnamn"> </asp:TextBox></li>
+                    
+                    <li style="margin-top: 4px; margin-left: 30px;">
+                        <asp:TextBox ID="TextBox1" runat="server" Width="130px" Text="Användarnamn"> </asp:TextBox></li>
                     <li style="margin-top: 4px; margin-left: 5px;">
-                        <asp:TextBox ID="TextBox2" runat="server" Width="140px" Text="Lösenord" TextMode="Password"></asp:TextBox></li>
+                        <asp:TextBox ID="TextBox2" runat="server" Width="130px" Text="Lösenord" TextMode="Password"></asp:TextBox></li>
                     <li style="margin-top: 3px; margin-left: 5px;">
                         <asp:Button ID="btnLogin" runat="server" Text="Logga in" OnClick="btnLogin_Click" /></li>
+                    <img alt="" style="margin-left:15px;" src="images/Sign-In.png" />
                 </ul>
             </div>
         </div>
@@ -40,6 +42,14 @@
             KATEGORIER<br /><br />
             <uc1:Categories 
                 ID="Categories1" runat="server" />
+            <br />
+            
+            <div style="background-image: url(images/meny.jpg);">Skicka ett nyhetesbrev till mig:<br /></div><br />
+            <asp:TextBox ID="txtNyhetesBrev" runat="server" Width="193px"></asp:TextBox>
+            <asp:Button ID="btnSend" runat="server" Text="Skicka" />
+            <br /><br />
+            <div style="background-image: url(images/meny.jpg);"><br /></div>
+            
             <br />
 
             <img alt="" style="padding: 20px;" src="images/rockweb.jpg" />
