@@ -22,9 +22,6 @@ public class ProductManagerByLINQ : IProductManager
         //
     }
 
-
-
-
     #region IProductManager Members
 
     public System.Collections.Generic.List<ProductItem> GetAllProducts()
@@ -37,7 +34,7 @@ public class ProductManagerByLINQ : IProductManager
         throw new NotImplementedException();
     }
 
-    public System.Collections.Generic.List<ProductItem> SearchProducts()
+    public System.Collections.Generic.List<ProductItem> SearchProducts(string searchString)
     {
         throw new NotImplementedException();
     }

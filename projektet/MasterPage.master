@@ -83,7 +83,8 @@
                         <asp:Image ID="Image1" runat="server" ImageUrl="~/images/ShopList.png" />
                         <asp:Label ID="lblMessage" runat="server" ForeColor="Black" Text="Varukorgen är tom"></asp:Label>
                         <div style="float: right;">
-                            <asp:Button ID="btnPay" runat="server" Text="Till Kassan" BackColor="#FF3300" OnClick="btnPay_Click" /></div>
+                            
+                            <a href=""><img alt="" src="images/tillkassan.png" /></a></div>
                     </td>
                 </tr>
             </table>
