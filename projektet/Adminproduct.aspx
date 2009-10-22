@@ -91,8 +91,7 @@
                 <asp:Label ID="Label2" runat="server" Text="Kategori:"></asp:Label>
             </td>
             <td>
-                <asp:DropDownList ID="ddlCategory" runat="server" 
-                    onselectedindexchanged="ddlCategory_SelectedIndexChanged">
+                <asp:DropDownList ID="ddlCategory" runat="server" >
                 </asp:DropDownList>
             </td>
         </tr>

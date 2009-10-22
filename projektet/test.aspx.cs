@@ -15,6 +15,13 @@ public partial class test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        CustomerItem c = new CustomerItem();
 
+        c.FirstName = "Marcus";
+        c.LastName = "Malmestad";
+        c.Email = "javlarochhelvete@gmail.com";
+        c.ActivationCode = StringHelper.RandomString(20);
+
+        MailManager.SendMail(c);
     }
 }

@@ -31,68 +31,69 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
 <h1>Registera dig här!</h1>
+    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
     <table class="style1" style="padding:20px;" cellpadding="50px">
         <tr>
             <td class="style5">
                     <asp:Label ID="lblForName" runat="server" Text="Namn:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox3" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtForName" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                 <asp:Label ID="lblLastName" runat="server" Text="Efternamn:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox4" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtSurName" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                     <asp:Label ID="lblPersNr" runat="server" Text="Personnr:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox5" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtSocialNumber" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                 <asp:Label ID="lblAdress" runat="server" Text="Adress:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox6" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtAddress" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                 <asp:Label ID="lblPostNr" runat="server" Text="Postnr:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox7" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtPostNumber" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                 <asp:Label ID="lblStad" runat="server" Text="Ort:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox8" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtCity" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                 <asp:Label ID="lblCountry" runat="server" Text="Land:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox9" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtCountry" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                     <asp:Label ID="lblTele" runat="server" Text="Telefon:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox10" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtTelephone" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
             <td class="style5">
                 <asp:Label ID="lblMobil" runat="server" Text="Mobil"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="TextBox11" runat="server" Width="260px"></asp:TextBox>
+                <asp:TextBox ID="txtMobile" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -113,7 +114,8 @@
             <td class="style5">
                 &nbsp;</td>
             <td class="style6">
-                <asp:Button ID="Button3" runat="server" Text="Registrera" />
+                <asp:Button ID="btnSubmit" runat="server" Text="Registrera" 
+                    onclick="btnSubmit_Click" />
             </td>
         </tr>
     </table>
