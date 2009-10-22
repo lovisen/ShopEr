@@ -11,19 +11,35 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Text;
 
 /// <summary>
 /// Summary description for ProductImageManager
 /// </summary>
 public class ProductImageManager
 {
-	public ProductImageManager()
-	{
-		//
-		// TODO: Add constructor logic here
-		//
-	}
+    //***Refaktoreringsmetoder***//
+    //Refaktoreringskod för att se om någon rad har påverkats av kommandot, om så inte är fallet returners inget
+    public static bool IsChangedRowFromExecutionSuccessful(DbCommand comm)
+    {
+        int result = -1;
+        try
+        {
+            result = DataAccess.ExecuteNonQuery(comm);
+        }
+        catch (Exception)
+        {
 
+        }
+        return (result != -1);
+    }
+
+    public ProductImageManager()
+    {
+        //
+        // TODO: Add constructor logic here
+        //
+    }
 
     public struct IncludeToFill
     {
@@ -50,7 +66,6 @@ public class ProductImageManager
 
         return list;
     }
-
 
     public static List<ProductImageItem> GetImagesForProduct(long productId)
     {
@@ -81,4 +96,16 @@ public class ProductImageManager
 
         return FillAll(table, inc);
     }
+    //TODO: Louise - Fråga Magnus varför jag inte kan få imageId efter jag har stoppat in den nya bilden i tabellen. 
+    //Jag behöver id för att sen stoppa in det i kopplingstabellen. Blir felmeddelande när jag försöker executa.
+    public static bool InsertProductImage(long productId, string imageUrl)
+    {
+        DbCommand comm = DataAccess.CreateCommand("InsertProductImage");
+        comm.CommandType = CommandType.StoredProcedure;
+        comm.CreateAndAddParameter("@productId", productId, DbType.Int32);
+        comm.CreateAndAddParameter("@imageUrl", imageUrl, DbType.String);
+        return IsChangedRowFromExecutionSuccessful(comm);
+    }
+
+      
 }

@@ -105,4 +105,15 @@ public class CategoryManager
         return FillAll(table, inc);
     }
 
+    //public static List<CategoryItem> InsertCategory(int Id)
+    //{
+    //    DbCommand comm = DataAccess.CreateCommand();
+    //    comm.CommandText = CommandType.Text;
+    //    comm.CommandText = "INSERT INTO Category(Name, ParentCategoryId) VALUES(@Name, @ParentCategoryId)";
+
+    //}
+
+
+
+
 }

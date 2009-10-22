@@ -29,7 +29,7 @@ public class ProductManagerByLINQ : IProductManager
         throw new NotImplementedException();
     }
 
-    public ProductItem GetProductById(int id)
+    ProductItem IProductManager.GetProductById(int id)
     {
         throw new NotImplementedException();
     }
@@ -44,20 +44,31 @@ public class ProductManagerByLINQ : IProductManager
         throw new NotImplementedException();
     }
 
-    public bool InsertProduct(ProductLINQ insertProduct)
+    public long InsertProduct(ProductLINQ insertProduct)
     {
         ShopErDataContext db = new ShopErDataContext();
         try
         {
             db.ProductLINQs.InsertOnSubmit((ProductLINQ)insertProduct);
             db.SubmitChanges();
-            return true;
+            return insertProduct.Id;
         }
         catch (Exception)
         {
-            return false;
-            throw;
-
+            return 0;
+        }
+    }
+    public static ProductLINQ GetProductByIdWithLinq(long id)
+    {
+        ShopErDataContext db = new ShopErDataContext();
+        try
+        {
+            var product = db.ProductLINQs.FirstOrDefault(p => p.Id == id);
+            return product;
+        }
+        catch (Exception)
+        {
+            return null;
         }
     }
 
@@ -65,7 +76,6 @@ public class ProductManagerByLINQ : IProductManager
     {
         throw new NotImplementedException();
     }
-
+}
     #endregion
 
-}
