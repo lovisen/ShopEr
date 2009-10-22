@@ -6,18 +6,6 @@
         {
             width: 62%;
         }
-        .style2
-        {
-            width: 118px;
-        }
-        .style3
-        {
-            width: 116px;
-        }
-        .style4
-        {
-            width: 115px;
-        }
         .style5
         {
             width: 73px;
@@ -30,8 +18,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <br />
-<h1>Registera dig här!</h1>
-    <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+<h1>Registera dig här!<asp:ObjectDataSource ID="ODSCountry" runat="server" 
+        SelectMethod="GetAllCountries" TypeName="CountryManager">
+    </asp:ObjectDataSource>
+    </h1>
+    <asp:Label ID="lblError" runat="server" Text="" ForeColor="#FF3300"></asp:Label>
     <table class="style1" style="padding:20px;" cellpadding="50px">
         <tr>
             <td class="style5">
@@ -79,7 +70,10 @@
             <td class="style5">
                 <asp:Label ID="lblCountry" runat="server" Text="Land:"></asp:Label></td>
             <td class="style6">
-                <asp:TextBox ID="txtCountry" runat="server" Width="260px"></asp:TextBox>
+                <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="ODSCountry" 
+                    DataTextField="CountryName" DataValueField="Id" Height="28px" Width="258px">
+                </asp:DropDownList>
+                <!-- <asp:TextBox ID="txtCountry" runat="server" Width="260px"></asp:TextBox> -->
             </td>
         </tr>
         <tr>
@@ -108,6 +102,13 @@
                     <asp:Label ID="lblPassword" runat="server" Text="Lösenord:"></asp:Label></td>
             <td class="style6">
                 <asp:TextBox ID="txtPassword" runat="server" Width="260px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="style5">
+                    <asp:Label ID="Label1" runat="server" Text="Repetera Lösenord:"></asp:Label></td>
+            <td class="style6">
+                <asp:TextBox ID="txtPassword2" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>

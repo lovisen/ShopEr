@@ -86,7 +86,6 @@
             </td>
             <td>
                 <asp:DropDownList ID="ddlCategory" runat="server" >
-<<<<<<< HEAD
                 </asp:DropDownList>
             </td>
         </tr>
@@ -96,8 +95,6 @@
             </td>
             <td>
                 <asp:DropDownList ID="ddlSubCategory" runat="server">
-=======
->>>>>>> 594bb647fe79b9c858f45960357255f976c34f5f
                 </asp:DropDownList>
             </td>
         </tr>
