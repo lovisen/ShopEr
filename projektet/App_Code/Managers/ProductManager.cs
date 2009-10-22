@@ -178,7 +178,7 @@ public class ProductManager : IProductManager
         throw new NotImplementedException();
     }
 
-    public bool InsertProduct(ProductLINQ insertProduct)
+    public long InsertProduct(ProductLINQ insertProduct)
     {
         throw new NotImplementedException();
     }

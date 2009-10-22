@@ -16,25 +16,26 @@ public partial class Adminproduct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        try
+        if (!Page.IsPostBack)
         {
-            var lista = CategoryManager.GetCategories();
-            foreach (CategoryItem c in lista) // TODO: Här ska jag fortsätta - Louise. Se till att subcat ser bra ut, samt att det går att inserta
+            try
             {
-                ddlCategory.Items.Add(new ListItem(c.CategoryName, c.Id.ToString()));
-                foreach (CategoryItem cc in c.SubCategories)
+                var lista = CategoryManager.GetCategories();
+                foreach (CategoryItem c in lista)
                 {
-                    ddlCategory.Items.Add(new ListItem("  -" + cc.CategoryName, cc.Id.ToString()));
+                    //ddlCategory.Items.Add(new ListItem(c.CategoryName, c.Id.ToString()));
+                    foreach (CategoryItem cc in c.SubCategories)
+                    {
+                        ddlCategory.Items.Add(new ListItem(cc.CategoryName, cc.Id.ToString()));
+                    }
                 }
             }
-
+            catch (Exception)
+            {
+                lblMessageText.Text = "Något gick fel, försök igen";
+                throw;
+            }
         }
-        catch (Exception)
-        {
-
-            throw;
-        }
-
     }
     protected void btnInsertProduct_Click(object sender, EventArgs e)
     {
@@ -42,30 +43,80 @@ public partial class Adminproduct : System.Web.UI.Page
         int amount;
         int price;
 
-
-        if (byte.TryParse(txtDiscount.Text, out discount) && int.TryParse(txtAmount.Text, out amount) && int.TryParse(txtPrice.Text, out price) && Page.IsValid)
+        if (int.TryParse(txtAmount.Text, out amount) && int.TryParse(txtPrice.Text, out price) && Page.IsValid)
         {
             try
             {
                 var insertProduct = new ProductLINQ();
-                insertProduct.Amount = amount;
-                insertProduct.Description = txtDescription.Text;
-                insertProduct.Discount = discount;
-                insertProduct.Featured = true;
-                insertProduct.Name = txtName.Text;
-                insertProduct.Price = price;
-                insertProduct.ShowOnPage = true;
-                insertProduct.SubCategory = 1;
-                var insertFunc = new ProductManagerByLINQ();
-                insertFunc.InsertProduct(insertProduct);
+                if (txtName.Text.Length < 3)
+                {
+                    lblMessageText.Text = "Produktnamnet måste bestå av minst två tecken";
+                }
 
+                if (txtDiscount.Text.Length > 0)
+                {
+                    if (byte.TryParse(txtDiscount.Text, out discount) && byte.Parse(txtDiscount.Text) < 99)
+                    {
+                        insertProduct.Discount = discount;
+                    }
+                    else
+                    {
+                        lblMessageText.Text = "Rabatten kan bara innehålla ett nummer mellan 1-99";
+                    }
+                }
+                else
+                {
+                    insertProduct.Amount = amount;
+                    insertProduct.Description = txtDescription.Text;
+                    insertProduct.Featured = cbYesFeature.Checked;
+                    insertProduct.Name = txtName.Text;
+                    insertProduct.Price = price;
+                    insertProduct.ShowOnPage = cbYesShowOnPage.Checked;
+                    insertProduct.SubCategory = long.Parse(ddlCategory.SelectedValue);
+                    var insertFunc = new ProductManagerByLINQ();
+                    if (imageUpload.HasFile)
+                    {
+                        try
+                        {
+                            imageUpload.SaveAs(HttpContext.Current.Server.MapPath("~/images/Product/" + imageUpload.FileName));
+                        }
+                        catch (Exception)
+                        {
+
+                            lblMessageText.Text = "Det gick inte att ladda upp bilden, försök igen";
+                        }
+                    }
+
+
+
+                    ////TODO: Louise - aktivera det här när funktionen för att spara bilderna i databasen funkar.
+                    //try
+                    //{
+                    //    var newprodId = insertFunc.InsertProduct(insertProduct);
+                    //    ProductImageManager.InsertProductImage(newprodId, imageUpload.FileName);
+
+                    //}
+                    //catch (Exception)
+                    //{
+
+                    //    lblMessageText.Text = "Något gick fel, försök igen";
+                    //}
+
+                    lblMessageText.Text = "Produkten är sparad";
+                }
             }
             catch (Exception)
             {
-
-                throw;
+                lblMessageText.Text = "Något gick fel, försök igen";
             }
         }
+        else
+        {
+            lblMessageText.Text = "Du måste fylla i antal produkter och pris.";
+        }
     }
-   
+    //TODO: Louise - göra en sökfunktion för admin produkt. Göra detaljsida för produkten man sökt på, för att 
+    //uppdatera produkten samt kunna ladda upp fler bilder till den. Man bör även kunna ladda upp fler bilder när man gör
+    //produkten. 
+
 }

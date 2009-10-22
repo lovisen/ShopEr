@@ -1,8 +1,7 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="Adminproduct.aspx.cs"
-    Inherits="Adminproduct" Title="ShopEr Admin" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminUpdateProduct.aspx.cs" Inherits="AdminUpdateProduct" Title="ShopEr Admin - Uppdatera produkt" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+   <style type="text/css">
         .style1
         {
             width: 100%;
@@ -13,8 +12,7 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h2>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> <h2>
         Produkthantering:</h2>
     <table class="style1" style="padding: 50px; border-style: dotted; border-width: 2px;
         width: 600px; margin-left: 100px; margin-top: 50px;" title="Produkthantering">
@@ -108,7 +106,7 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnInsertProduct" runat="server" Text="Lägg till produkt" OnClick="btnInsertProduct_Click" />
+                <asp:Button ID="btnInsertProduct" runat="server" Text="Uppdatera produkt" OnClick="btnInsertProduct_Click" />
             </td>
             <td>
                 &nbsp;
@@ -123,3 +121,4 @@
     <b style="margin-left: 65px; padding: 25px;">Resultat:</b>
     <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
 </asp:Content>
+
