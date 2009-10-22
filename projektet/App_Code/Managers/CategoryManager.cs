@@ -105,14 +105,44 @@ public class CategoryManager
         return FillAll(table, inc);
     }
 
-    //public static List<CategoryItem> InsertCategory(int Id)
-    //{
-    //    DbCommand comm = DataAccess.CreateCommand();
-    //    comm.CommandText = CommandType.Text;
-    //    comm.CommandText = "INSERT INTO Category(Name, ParentCategoryId) VALUES(@Name, @ParentCategoryId)";
+    public static bool InsertCategory(CategoryItem c)
+    {
+        try
+        {
+            DbCommand comm = DataAccess.CreateCommand();
+            comm.CommandText = "INSERT INTO Category(Name, ParentCategoryId) VALUES(@Name, @ParentCategoryId)";
+            comm.CreateAndAddParameter("@Name", c.CategoryName, DbType.String);
+            comm.CreateAndAddParameter("@ParentCategoryId", c.ParentCategoryId, DbType.Int64);
 
-    //}
+            DataAccess.ExecuteNonQuery(comm);
+            return true;
+        }
+        catch (Exception ex)
+        {
 
+            return false;
+        }
+    }
+
+
+    public static bool InsertChildCategory (CategoryItem c)
+    {
+        try
+        {
+            DbCommand comm = DataAccess.CreateCommand();
+            comm.CommandText = "INSERT INTO Category(Name, ParentCategoryId) VALUES(@Name, @ParentCategoryId)";
+            comm.CreateAndAddParameter("@Name", c.CategoryName, DbType.String);
+            comm.CreateAndAddParameter("@ParentCategoryId", c.ParentCategoryId, DbType.Int64);
+            
+            DataAccess.ExecuteNonQuery(comm);
+            return true;
+        }
+        catch (Exception ex)
+        {
+
+            return false;
+        }
+    }
 
 
 
