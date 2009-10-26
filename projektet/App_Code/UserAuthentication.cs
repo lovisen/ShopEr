@@ -46,7 +46,7 @@ public class UserAuthentication
         comm.CommandType = CommandType.Text;
         comm.CreateAndAddParameter("@Username", username, DbType.String);
         comm.CreateAndAddParameter("@Password", password, DbType.String);
-        comm.CommandText = "SELECT Id FROM Customer WHERE Email = @Username AND Password = @Password";
+        comm.CommandText = "SELECT Id FROM Customer WHERE Email = @Username AND Password = @Password AND Activated = 1";
         comm.Connection.Open();
 
         try
@@ -65,7 +65,8 @@ public class UserAuthentication
 
         //lägg till role och id i session
         HttpContext.Current.Session["UserRole"] = comm.ExecuteScalar().ToString();
-        HttpContext.Current.Session["UserId"] = Id.ToString(); 
+        HttpContext.Current.Session["UserId"] = Id.ToString();
+        HttpContext.Current.Session["UserName"] = username.ToString(); 
 
         comm.Connection.Close();
         comm.Connection.Dispose();

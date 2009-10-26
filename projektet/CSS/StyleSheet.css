@@ -92,6 +92,12 @@ img
 	width:200px;
 }
 
+#login
+{
+	float:right;
+	margin: 0 10px 0 0;	
+	display:inline;
+}
 
 
 
