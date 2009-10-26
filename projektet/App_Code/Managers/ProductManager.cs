@@ -168,12 +168,7 @@ public class ProductManager : IProductManager
         throw new NotImplementedException();
     }
 
-    public void GetAllFeaturedProducts()
-    {
-        throw new NotImplementedException();
-    }
-
-    public void UpdateProduct()
+    public List<ProductItem> GetAllFeaturedProducts()
     {
         throw new NotImplementedException();
     }
@@ -182,6 +177,11 @@ public class ProductManager : IProductManager
     {
         throw new NotImplementedException();
     }
-    #endregion
 
+    public bool UpdateProduct(ProductLINQ productToUpdate)
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion
 }

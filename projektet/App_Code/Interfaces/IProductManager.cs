@@ -19,8 +19,8 @@ public interface IProductManager
      List<ProductItem> GetAllProducts();
      ProductItem GetProductById(int id);
      List<ProductItem> SearchProducts(string searchString);
-    void GetAllFeaturedProducts();
+     List<ProductItem> GetAllFeaturedProducts();
     long InsertProduct(ProductLINQ insertProduct);
-    void UpdateProduct();
+    bool UpdateProduct(ProductLINQ productToUpdate);
 
    }

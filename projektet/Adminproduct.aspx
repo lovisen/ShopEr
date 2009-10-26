@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="Adminproduct.aspx.cs"
     Inherits="Adminproduct" Title="ShopEr Admin" %>
 
+<%@ Register src="UserControls/SearchProduct.ascx" tagname="SearchProduct" tagprefix="uc1" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">
         .style1
@@ -14,8 +16,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <h2>
-        Produkthantering:</h2>
+    <h2>             Lägg till produkt:</h2>
     <table class="style1" style="padding: 50px; border-style: dotted; border-width: 2px;
         width: 600px; margin-left: 100px; margin-top: 50px;" title="Produkthantering">
         <tr>
@@ -32,7 +33,8 @@
             </td>
             <td>
                 <asp:TextBox ID="txtName" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName">*</asp:RequiredFieldValidator>
+                    ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" 
+                    ControlToValidate="txtName" ValidationGroup="insertProduct">*</asp:RequiredFieldValidator>
 
             </td>
         </tr>
@@ -42,7 +44,8 @@
             </td>
             <td>
                 <asp:TextBox ID="txtAmount" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtAmount">*</asp:RequiredFieldValidator>
+                    ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" 
+                    ControlToValidate="txtAmount" ValidationGroup="insertProduct">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -60,7 +63,7 @@
             <td>
                 <asp:TextBox ID="txtPrice" runat="server" Width="300px"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
-                    ControlToValidate="txtPrice">*</asp:RequiredFieldValidator>
+                    ControlToValidate="txtPrice" ValidationGroup="insertProduct">*</asp:RequiredFieldValidator>
             </td>
         </tr>
         <tr>
@@ -108,7 +111,8 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnInsertProduct" runat="server" Text="Lägg till produkt" OnClick="btnInsertProduct_Click" />
+                <asp:Button ID="btnInsertProduct" runat="server" Text="Lägg till produkt" 
+                    OnClick="btnInsertProduct_Click" ValidationGroup="insertProduct" />
             </td>
             <td>
                 &nbsp;
@@ -116,10 +120,19 @@
         </tr>
     </table>
     <br />
-    <br />
-    <li style="padding: 25px; margin-left: 60px; list-style: none;">
+    <br />  <h3>
+        Sök efter produkt för att redigera:</h3>
+   
+    <div id="search">
+  
+        <%-- 
+        TODO: Fråga Magnus varför det ej går att trycka på knappen
         <asp:TextBox ID="txtSearch" runat="server" Height="23px" Width="263px"></asp:TextBox>
-        <asp:Button ID="btbSearch" runat="server" Text="SÖK PRODUKT" Height="28px" /></li>
-    <b style="margin-left: 65px; padding: 25px;">Resultat:</b>
-    <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+                        <asp:Button ID="btnSearch" runat="server" Text="Sök" 
+            onclick="btnSearch_Click2"  />--%>
+    
+        <uc1:SearchProduct ID="SearchProduct1" runat="server" />
+    
+</div>
 </asp:Content>
+

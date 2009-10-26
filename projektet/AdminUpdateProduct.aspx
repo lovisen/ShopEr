@@ -106,7 +106,8 @@
         </tr>
         <tr>
             <td>
-                <asp:Button ID="btnInsertProduct" runat="server" Text="Uppdatera produkt" OnClick="btnInsertProduct_Click" />
+                <asp:Button ID="btnUpdateProduct" runat="server" Text="Uppdatera produkt" 
+                    onclick="btnUpdateProduct_Click" />
             </td>
             <td>
                 &nbsp;

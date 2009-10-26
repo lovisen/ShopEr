@@ -92,7 +92,12 @@ img
 	width:200px;
 }
 
-
+#search 
+{
+	padding: 25px;
+	 margin-left: 100px;
+	  list-style: none;
+	}
 
 
 
