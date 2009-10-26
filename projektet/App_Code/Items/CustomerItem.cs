@@ -36,4 +36,5 @@ public class CustomerItem : BaseStructure<long>
     public CountryItem Country { get; set; }
     public string ActivationCode { get; set; }
     public bool Activated { get; set; }
+    public string City { get; set; }
 }
