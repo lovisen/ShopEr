@@ -1,6 +1,7 @@
 <%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
 
 <%@ Register src="UserControls/Categories.ascx" tagname="Categories" tagprefix="uc1" %>
+<%@ Register src="~/userControls/LoginLogout.ascx" tagname="LoginLogout" tagprefix="uc2" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,15 +27,10 @@
                     <li><a href="#">Nyhetsbrev</a></li>
                     <li><a href="#">Beställning</a></li>
                     <li><a href="#">Kontakt</a></li>
-                    
-                    <li style="margin-top: 4px; margin-left: 30px;">
-                        <asp:TextBox ID="TextBox1" runat="server" Width="130px" Text="Användarnamn"> </asp:TextBox></li>
-                    <li style="margin-top: 4px; margin-left: 5px;">
-                        <asp:TextBox ID="TextBox2" runat="server" Width="130px" Text="Lösenord" TextMode="Password"></asp:TextBox></li>
-                    <li style="margin-top: 3px; margin-left: 5px;">
-                        <asp:Button ID="btnLogin" runat="server" Text="Logga in" OnClick="btnLogin_Click" /></li>
-                    <img alt="" style="margin-left:15px;" src="images/Sign-In.png" />
-                </ul>
+                 </ul>         
+            <div id="login">          
+                <uc2:LoginLogout ID="LoginLogout" runat="server" />
+            </div>
             </div>
         </div>
         <br />

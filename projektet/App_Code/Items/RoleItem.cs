@@ -9,21 +9,19 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
-using System.Collections.Generic;
 
 /// <summary>
-/// Summary description for CategoryItem
+/// Summary description for RoleItem
 /// </summary>
-public class CategoryItem : BaseStructure<long>
+public class RoleItem : BaseStructure<long>
 {
-    public string CategoryName { get; set; }
-    public List<CategoryItem> SubCategories { get; set; }
-    public long ParentCategoryId { get; set; }
-    
-	public CategoryItem()
+	public RoleItem()
 	{
 		//
 		// TODO: Add constructor logic here
 		//
 	}
+
+    public string RoleName { get; set; }
+
 }

@@ -92,6 +92,15 @@
                 </asp:DropDownList>
             </td>
         </tr>
+          <tr>
+            <td>
+                <asp:Label ID="Label9" runat="server" Text="Underkategori:"></asp:Label>
+            </td>
+            <td>
+                <asp:DropDownList ID="ddlSubCategory" runat="server">
+                </asp:DropDownList>
+            </td>
+        </tr>
         <tr>
             <td>
                 <asp:Label ID="Label3" runat="server" Text="Beskrivning:"></asp:Label>

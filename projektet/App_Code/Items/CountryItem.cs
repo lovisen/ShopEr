@@ -9,21 +9,18 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
-using System.Collections.Generic;
 
 /// <summary>
-/// Summary description for CategoryItem
+/// Summary description for CountryItem
 /// </summary>
-public class CategoryItem : BaseStructure<long>
+public class CountryItem : BaseStructure<long>
 {
-    public string CategoryName { get; set; }
-    public List<CategoryItem> SubCategories { get; set; }
-    public long ParentCategoryId { get; set; }
-    
-	public CategoryItem()
+	public CountryItem()
 	{
 		//
 		// TODO: Add constructor logic here
 		//
 	}
+
+    public string CountryName { get; set; }
 }
