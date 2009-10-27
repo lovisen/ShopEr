@@ -146,4 +146,42 @@ public class CategoryManager
 
 
 
+    public static bool UpdateCategory(CategoryItem c)
+    {
+        try
+        {
+            DbCommand comm = DataAccess.CreateCommand();
+            comm.CommandText = "UPDATE Category SET Name = @Name WHERE Id = @Id";
+            comm.CreateAndAddParameter("@Name", c.CategoryName, DbType.String);
+            comm.CreateAndAddParameter("@Id", c.Id, DbType.Int64);
+
+            DataAccess.ExecuteNonQuery(comm);
+            return true;
+        }
+        catch (Exception ex)
+        {
+
+            return false;
+        }
+    }
+
+
+    //public static CategoryItem GetChildCategory(int id)
+    //{
+    //    DbCommand comm = DataAccess.CreateCommand();
+    //    comm.CommandType = CommandType.Text;
+    //    comm.CommandText = "SELECT Id, Name, ParentCategoryId FROM Category WHERE ParentCategoryId = @Id";
+    //    comm.CreateAndAddParameter("@ParentCategoryId", id, DbType.Int32);
+    //    DataTable table = DataAccess.ExecuteSelectCommand(comm);
+
+    //    IncludeToFill inc;
+    //    inc.CategoryName = true;
+    //    inc.Id = true;
+    //    inc.SubCategory = true;
+
+    //    return FillOne(table.Rows[0], inc);
+    //}
+
+
+
 }
