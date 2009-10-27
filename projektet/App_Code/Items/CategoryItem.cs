@@ -19,6 +19,7 @@ public class CategoryItem : BaseStructure<long>
     public string CategoryName { get; set; }
     public List<CategoryItem> SubCategories { get; set; }
     public long ParentCategoryId { get; set; }
+    public bool ShowOnPage { get; set; }
     
 	public CategoryItem()
 	{

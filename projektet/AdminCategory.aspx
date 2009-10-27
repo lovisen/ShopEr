@@ -147,7 +147,8 @@
             <td class="style10">
                 <asp:DropDownList ID="DropDownList2" runat="server" 
                      DataTextField="CategoryName" 
-                    DataValueField="Id" Height="20px" Width="134px">
+                    DataValueField="Id" Height="20px" Width="134px" 
+                    onselectedindexchanged="DropDownList2_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -157,7 +158,16 @@
             </td>
             <td>
                 <asp:TextBox ID="txtUpdateChildCategory" runat="server" Width="200px"></asp:TextBox>
-                <asp:Button ID="btnUpdateChildCategory" runat="server" Text="Uppdatera" />
+                <table class="style1">
+                    <tr>
+                        <td>
+                            <asp:CheckBox ID="chbSkallIntesynas" runat="server" 
+                                Text="Denna kategori ska inte synas på sidan:" />
+                            &nbsp;<asp:Button ID="btnUpdateChildCategory" runat="server" 
+                                onclick="btnUpdateChildCategory_Click" Text="Uppdatera" />
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
       
@@ -166,41 +176,12 @@
                 <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="DropDownCategoryUpdate" 
                         EventName="SelectedIndexChanged" />
-            </Triggers>
+                         <asp:AsyncPostBackTrigger ControlID="DropDownList2" 
+                        EventName="SelectedIndexChanged" />
+                </Triggers>
                 </asp:UpdatePanel> 
     
     
       <br />
-    <img alt="" src="images/Delete.png" />DENNA KATEGORI SKALL INTE VISAS PÅ SIDANle1" frame="border" style="border-style: dotted; border-width: 1px">
-        <tr>
-            <td class="style3">
-                Huvudkategori<br />
-            </td>
-            <td class="style4">
-                <asp:TextBox ID="txtSearchCategory" runat="server" Width="200px"></asp:TextBox>
-                <asp:Button ID="btnSearchCategory" runat="server" Text="Sök" />
-            </td>
-        </tr>
-        <tr>
-            <td class="style2">
-                <br />
-            </td>
-            <td>
-            
-                &nbsp;</td>
-        </tr>
-        <tr>
-            <td class="style2">
-                &nbsp;
-                Underkategori</td>
-            <td>
-            
-                <asp:TextBox ID="txtSearchChildCategory" runat="server" Width="200px"></asp:TextBox>
-                <asp:Button ID="btnSearchChildCategory" runat="server" Text="Sök" />
-            </td>
-        </tr>
-    </table>
     
-    
-    
-</asp:Content>
+    </asp:Content>

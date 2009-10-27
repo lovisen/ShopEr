@@ -9,6 +9,7 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 /// <summary>
 /// Summary description for ProductManagerByLINQ
@@ -24,7 +25,7 @@ public class ProductManagerByLINQ : IProductManager
 
     #region IProductManager Members
 
-    public System.Collections.Generic.List<ProductItem> GetAllProducts()
+    public List<ProductItem> GetAllProducts()
     {
         throw new NotImplementedException();
     }
@@ -39,7 +40,7 @@ public class ProductManagerByLINQ : IProductManager
         throw new NotImplementedException();
     }
 
-    public void GetAllFeaturedProducts()
+    public List<ProductItem> GetAllFeaturedProducts()
     {
         throw new NotImplementedException();
     }
@@ -72,10 +73,30 @@ public class ProductManagerByLINQ : IProductManager
         }
     }
 
-    public void UpdateProduct()
+    public bool UpdateProduct(ProductLINQ productToUpdate)
     {
-        throw new NotImplementedException();
+        ShopErDataContext db = new ShopErDataContext();
+        try
+        {
+            var pr = db.ProductLINQs.FirstOrDefault(p => p.Id == productToUpdate.Id);
+            pr.Name = productToUpdate.Name;
+            pr.Price = productToUpdate.Price;
+            pr.Amount = productToUpdate.Amount;
+            pr.Description = productToUpdate.Description;
+            pr.Discount = productToUpdate.Discount;
+            pr.Featured = productToUpdate.Featured;
+            pr.ShowOnPage = productToUpdate.ShowOnPage;
+            pr.SubCategory = productToUpdate.SubCategory;
+            
+            db.SubmitChanges();
+            return true;
+        }
+        catch (Exception)
+        {
+            return false;
+            throw;
+        }
     }
-}
+     }
     #endregion
 

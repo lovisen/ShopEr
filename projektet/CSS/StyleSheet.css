@@ -98,7 +98,12 @@ img
 	margin: 0 10px 0 0;	
 	display:inline;
 }
-
+#search 
+{
+	padding: 25px;
+	 margin-left: 100px;
+	  list-style: none;
+	}
 
 
 

@@ -105,6 +105,17 @@ public class CategoryManager
         return FillAll(table, inc);
     }
 
+    public static bool GetShowOnPage(long SubCategoryId)
+    {
+        DbCommand comm = DataAccess.CreateCommand();
+        comm.CommandType = CommandType.Text;
+        comm.CommandText = "SELECT ShowOnPage FROM Category WHERE Id = @SubCategoryId";
+        comm.CreateAndAddParameter("@SubCategoryId", SubCategoryId, DbType.Int32);
+        var table = DataAccess.ExecuteScalar(comm);
+        
+        return bool.Parse(table);
+    }
+
     public static bool InsertCategory(CategoryItem c)
     {
         try
@@ -130,10 +141,11 @@ public class CategoryManager
         try
         {
             DbCommand comm = DataAccess.CreateCommand();
-            comm.CommandText = "INSERT INTO Category(Name, ParentCategoryId) VALUES(@Name, @ParentCategoryId)";
+            comm.CommandText = "INSERT INTO Category(Name, ParentCategoryId, ShowOnPage) VALUES(@Name, @ParentCategoryId, @ShowOnPage)";
             comm.CreateAndAddParameter("@Name", c.CategoryName, DbType.String);
             comm.CreateAndAddParameter("@ParentCategoryId", c.ParentCategoryId, DbType.Int64);
-            
+            comm.CreateAndAddParameter("@ShowOnPage", c.ShowOnPage, DbType.Boolean);
+
             DataAccess.ExecuteNonQuery(comm);
             return true;
         }
@@ -166,22 +178,24 @@ public class CategoryManager
     }
 
 
-    //public static CategoryItem GetChildCategory(int id)
-    //{
-    //    DbCommand comm = DataAccess.CreateCommand();
-    //    comm.CommandType = CommandType.Text;
-    //    comm.CommandText = "SELECT Id, Name, ParentCategoryId FROM Category WHERE ParentCategoryId = @Id";
-    //    comm.CreateAndAddParameter("@ParentCategoryId", id, DbType.Int32);
-    //    DataTable table = DataAccess.ExecuteSelectCommand(comm);
+    public static bool UpdateChildCategory(CategoryItem c)
+    {
+        try
+        {
+            DbCommand comm = DataAccess.CreateCommand();
+            comm.CommandText = "UPDATE Category SET Name = @Name, ShowOnPage = @ShowOnPage WHERE Id = @Id";
+            comm.CreateAndAddParameter("@Name", c.CategoryName, DbType.String);
+            comm.CreateAndAddParameter("@Id", c.Id, DbType.Int64);
+            comm.CreateAndAddParameter("@ShowOnPage", c.ShowOnPage, DbType.Boolean);
 
-    //    IncludeToFill inc;
-    //    inc.CategoryName = true;
-    //    inc.Id = true;
-    //    inc.SubCategory = true;
+            DataAccess.ExecuteNonQuery(comm);
+            return true;
+        }
+        catch (Exception ex)
+        {
 
-    //    return FillOne(table.Rows[0], inc);
-    //}
+            return false;
+        }
 
-
-
+    }
 }

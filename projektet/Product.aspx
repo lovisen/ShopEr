@@ -44,7 +44,7 @@
             <td id="Td2" runat="server" style="background-color: #fff; font-weight: bold; color: #333333;
                 width: 200px;">
                 Namn:<asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' /><br />
-                <img src='images/Product/<%# Eval("Images[0].ImageURL") %>' alt="" style="padding: 20px;" /><br />
+                <img src='images/Product/<%# WriteImageUrl(Eval("Images"))%>' alt="" style="padding: 20px;" /><br />
                 Pris:<asp:Label ID="PriceLabel" runat="server" Text='<%# Eval("Price") %>' /><br /><br />
                 <a href=""><img alt="Köp" src="images/kop.png" /></a>
                 <a href="ProductDetail.aspx?Product=<%# Eval("Id") %>&Category=<%#Request.QueryString["Category"] %>"><img alt="Köp" src="images/info.png" /></a>

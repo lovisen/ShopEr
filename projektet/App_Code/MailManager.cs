@@ -35,7 +35,7 @@ public class MailManager
                 "Hej {0} {1}, <br /><br /> För att kunna börja använda ditt konto så måste du aktivera ditt konto.<br />" +
                 "Klicka på länken nedan för att kunna göra detta:<br />" +
                 "<a href=\"{2}ConfirmAccount.aspx?ActivationCode={3}\">{2}ConfirmAccount.aspx?ActivationCode={3}</a>"
-                , c.FirstName, c.LastName, "http://localhost:1453/", c.ActivationCode);
+                , c.FirstName, c.LastName, "http://localhost:1453/projektet/", c.ActivationCode);
             mailMessage.IsBodyHtml = true;
             mailMessage.From = new MailAddress("lbsshoper@gmail.com", "ShopEr");
 

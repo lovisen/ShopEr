@@ -39,13 +39,14 @@ public class UserAuthentication
     //logga in
     public static bool LogIn(string username, string password)
     {
+        string hashPassword = StringHelper.HashWithMD5(password);
         string Id;
 
         //kolla om username och password stämmer, kolla id
         DbCommand comm = DataAccess.CreateCommand();
         comm.CommandType = CommandType.Text;
         comm.CreateAndAddParameter("@Username", username, DbType.String);
-        comm.CreateAndAddParameter("@Password", password, DbType.String);
+        comm.CreateAndAddParameter("@Password", hashPassword, DbType.String);
         comm.CommandText = "SELECT Id FROM Customer WHERE Email = @Username AND Password = @Password AND Activated = 1";
         comm.Connection.Open();
 
@@ -79,6 +80,48 @@ public class UserAuthentication
     public static void LogOut()
     {
         HttpContext.Current.Session.Abandon();
+    }
+
+    public static string getUserID()
+    {
+        string userId;
+        try
+        {
+            userId = HttpContext.Current.Session["UserId"].ToString();
+        }
+        catch
+        {
+            return null;
+        }
+        return userId;
+    }
+
+    public static string getUserName()
+    {
+        string userName;
+        try
+        {
+            userName = HttpContext.Current.Session["UserName"].ToString();
+        }
+        catch
+        {
+            return null;
+        }
+        return userName;
+    }
+
+    public static string getUserRole()
+    {
+        string userRole;
+        try
+        {
+            userRole = HttpContext.Current.Session["UserRole"].ToString();
+        }
+        catch
+        {
+            return null;
+        }
+        return userRole;
     }
 
 }

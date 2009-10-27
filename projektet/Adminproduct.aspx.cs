@@ -12,6 +12,10 @@ using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 
+//TODO: Louise - Göra detaljsida för produkten man sökt på, för att 
+    //uppdatera produkten samt kunna ladda upp fler bilder till den. Man bör även kunna ladda upp fler bilder när man gör
+    //produkten. 
+
 public partial class Adminproduct : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -48,7 +52,7 @@ public partial class Adminproduct : System.Web.UI.Page
             try
             {
                 var insertProduct = new ProductLINQ();
-                if (txtName.Text.Length < 3)
+                if (txtName.Text.Length < 2)
                 {
                     lblMessageText.Text = "Produktnamnet måste bestå av minst två tecken";
                 }
@@ -115,8 +119,6 @@ public partial class Adminproduct : System.Web.UI.Page
             lblMessageText.Text = "Du måste fylla i antal produkter och pris.";
         }
     }
-    //TODO: Louise - göra en sökfunktion för admin produkt. Göra detaljsida för produkten man sökt på, för att 
-    //uppdatera produkten samt kunna ladda upp fler bilder till den. Man bör även kunna ladda upp fler bilder när man gör
-    //produkten. 
-
+ 
+ 
 }
