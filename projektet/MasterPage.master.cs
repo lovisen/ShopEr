@@ -25,4 +25,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         Response.Redirect("Adminproduct.aspx");
     }
+    protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+    {
+        Response.Redirect("SearchResult.aspx?searchString=" + txtSearch.Text);
+    }
 }

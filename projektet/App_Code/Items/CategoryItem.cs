@@ -16,7 +16,18 @@ using System.Collections.Generic;
 /// </summary>
 public class CategoryItem : BaseStructure<long>
 {
-    public string CategoryName { get; set; }
+    private string _categoryName;
+    public string CategoryName
+    {
+        get
+        {
+            return _categoryName;
+        }
+        set
+        {
+            _categoryName = value.Trim();
+        }
+    }
     public List<CategoryItem> SubCategories { get; set; }
     public long ParentCategoryId { get; set; }
     

@@ -20,13 +20,13 @@
         </div>
         <div id="meny">
             <div id="myslidemenu" class="jqueryslidemenu">
-                <ul>
+                <ul id="LinkList" runat="server">
                     <li><a href="Default.aspx">Start</a></li>
                     <li><a href="Registation.aspx">Registrera</a></li>
                     <li><a href="#">Kundservice</a></li>
-                    <li><a href="#">Om webbshopen</a></li>
-                    <li><a href="#">Nyhetsbrev</a></li>
-                    <li><a href="#">Beställning</a></li>
+                    <%--<li><a href="#">Om webbshopen</a></li>--%>
+                    <%--<li><a href="#">Nyhetsbrev</a></li>--%>
+                    <%--<li><a href="#">Beställning</a></li>--%>
                     <li><a href="#">Kontakt</a></li>
                  </ul>         
             <div id="login">          
@@ -53,9 +53,17 @@
             <img alt="" style="padding: 20px;" src="images/festival.jpg" />
         </div>
         <div id="contex">
-            <img alt="sök" src="images/sok.jpg" /><br />
+            <div id="SearchColumn">
+                <asp:TextBox ID="txtSearch" runat="server" CssClass="searchTextBox"></asp:TextBox>
+                <asp:ImageButton ID="ImageButton1" runat="server" 
+                    ImageUrl="images/searchButton.jpg" CssClass="searchButton" 
+                    onclick="ImageButton1_Click" />
+                <%--<img alt="sök" src="images/sok.jpg" /><br />--%>
+            </div>
+            <div id="ContentHolder">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
+            </div>
         </div>
         <div id="rightcolumn">
             VARUKORG<br />

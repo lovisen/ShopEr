@@ -103,8 +103,39 @@ img
 	padding: 25px;
 	 margin-left: 100px;
 	  list-style: none;
-	}
+}
 
+#SearchColumn 
+{
+	float: left;
+	clear: both;
+	background-image: url(../images/searchBar.jpg);
+	background-repeat:no-repeat;
+	height: 100px;
+	width: 700px;
+}
+
+#ContentHolder 
+{
+	float: left;
+	clear: both;
+}
+
+.searchButton
+{
+	float:left;
+	margin-top: 13px;
+	margin-left: 10px;
+}
+
+.searchTextBox
+{
+	margin-top: 25px;
+	margin-left: 40px;
+	height:20px;
+	width: 200px;
+	float:left;
+}
 
 
 
