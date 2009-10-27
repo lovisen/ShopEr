@@ -13,14 +13,16 @@ using System.Xml.Linq;
 
 public partial class Registation : System.Web.UI.Page
 {
-
-
     protected void Page_Load(object sender, EventArgs e)
     {
         //ddlCountry.DataSource = CountryManager.GetAllCountries();
         //ddlCountry.DataBind();
         //ddlCountry.DataTextField = "CountryName";
         //ddlCountry.DataValueField = "Id";
+        if (UserAuthentication.IsAuthenticated())
+        {
+            Response.Redirect("Default.aspx");
+        }
     }
 
     protected void btnSubmit_Click(object sender, EventArgs e)

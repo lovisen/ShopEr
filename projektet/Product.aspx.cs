@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -21,4 +22,16 @@ public partial class Product : System.Web.UI.Page
     {
         Response.Redirect("ProductDetail.aspx");
     }
+
+    public string WriteImageUrl(object img)
+    {
+        List<ProductImageItem> img2 = (List<ProductImageItem>)img;
+        
+        if (img2.Count > 0)
+        {
+            return img2[0].ImageURL;
+        }
+        return "no_image.jpeg";
+    }
 }
+

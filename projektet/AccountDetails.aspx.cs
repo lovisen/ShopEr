@@ -21,7 +21,7 @@ public partial class AccountDetails : System.Web.UI.Page
         }
         else
         {
-            CustomerItem c = CustomerManager.GetCustomerDetails(1);
+            CustomerItem c = CustomerManager.GetCustomerDetails(Convert.ToInt64( UserAuthentication.getUserID()));
             txtAddress.Text = c.Adress;
             txtEpost.Text = c.Email;
             txtForName.Text = c.FirstName;
@@ -105,7 +105,7 @@ public partial class AccountDetails : System.Web.UI.Page
             c.NewsLetter = false;
             c.Role = new RoleItem();
             c.City = txtCity.Text;
-            c.Id = 1;
+            c.Id = Convert.ToInt64( UserAuthentication.getUserID());
 
             if (!CustomerManager.UpdateCustomerDetails(c))
                 lblError.Text += "Något Gick fel! Försök igen senare.  <br />";
@@ -135,8 +135,8 @@ public partial class AccountDetails : System.Web.UI.Page
         {
             
             c.Password = StringHelper.HashWithMD5(txtPassword.Text);
-            
-            c.Id = 1;
+
+            c.Id = Convert.ToInt64( UserAuthentication.getUserID());
 
             if (!CustomerManager.UpdateCustomerPassword(c))
                 lblError.Text += "Något Gick fel! Försök igen senare.  <br />";
