@@ -170,15 +170,31 @@ public class ProductManager : IProductManager
 
     public List<ProductItem> GetAllFeaturedProducts()
     {
-        throw new NotImplementedException();
+        DbCommand comm = DataAccess.CreateCommand();
+        comm.CommandText = "SELECT * FROM Product WHERE Featured = 1";
+
+        DataTable table = DataAccess.ExecuteSelectCommand(comm);
+
+        IncludeToFill inc;
+        inc.Amount = false;
+        inc.Discount = true;
+        inc.ShowOnPage = false;
+        inc.Featured = true;
+        inc.Description = false;
+        inc.Id = true;
+        inc.Images = true;
+        inc.Name = true;
+        inc.Price = true;
+
+        return FillAll(table, inc);
     }
 
-    public long InsertProduct(ProductItem insertProduct)
+    public long InsertProduct(ProductLINQ insertProduct)
     {
         throw new NotImplementedException();
     }
 
-    public bool UpdateProduct(ProductItem productToUpdate)
+    public bool UpdateProduct(ProductLINQ productToUpdate)
     {
         throw new NotImplementedException();
     }
