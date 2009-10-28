@@ -61,19 +61,18 @@
         </tr>
         <tr>
             <td class="style5">
-                <asp:Label ID="lblStad" runat="server" Text="Ort:"></asp:Label></td>
-            <td class="style6">
-                <asp:TextBox ID="txtCity" runat="server" Width="260px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style5">
                 <asp:Label ID="lblCountry" runat="server" Text="Land:"></asp:Label></td>
             <td class="style6">
                 <asp:DropDownList ID="ddlCountry" runat="server" DataSourceID="ODSCountry" 
                     DataTextField="CountryName" DataValueField="Id" Height="28px" Width="258px">
                 </asp:DropDownList>
-                <!-- <asp:TextBox ID="txtCountry" runat="server" Width="260px"></asp:TextBox> -->
+            </td>
+        </tr>        
+        <tr>
+            <td class="style5">
+                <asp:Label ID="lblStad" runat="server" Text="Ort:"></asp:Label></td>
+            <td class="style6">
+                <asp:TextBox ID="txtCity" runat="server" Width="260px"></asp:TextBox>
             </td>
         </tr>
         <tr>

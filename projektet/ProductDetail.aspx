@@ -20,7 +20,7 @@
                 <li style="font-size:17px;">Namn:
                     <asp:Label ID="NameLabel" runat="server" Text='<%# Eval("Name") %>' />
                     <br />
-                    <img src='images/Product/<%# Eval("Images[0].ImageURL") %>' alt="" style="padding: 20px;" />
+                    <img src='images/Product/<%# WriteImageUrl(Eval("Images"))%>' alt="" style="padding: 20px;" />
                     <br />
                     Beskrivning:
                     <asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("Description") %>' />
