@@ -20,7 +20,7 @@ public interface IProductManager
      ProductItem GetProductById(int id);
      List<ProductItem> SearchProducts(string searchString);
      List<ProductItem> GetAllFeaturedProducts();
-    long InsertProduct(ProductLINQ insertProduct);
-    bool UpdateProduct(ProductLINQ productToUpdate);
+    long InsertProduct(ProductItem insertProduct);
+    bool UpdateProduct(ProductItem productToUpdate);
 
    }

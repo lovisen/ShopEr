@@ -11,17 +11,17 @@ using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
-
-//TODO: Louise - Göra detaljsida för produkten man sökt på, för att 
-    //uppdatera produkten samt kunna ladda upp fler bilder till den. Man bör även kunna ladda upp fler bilder när man gör
-    //produkten. 
-
+using System.Drawing.Drawing2D;
+using System.Drawing;
+using System.Drawing.Imaging;
 public partial class Adminproduct : System.Web.UI.Page
 {
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
+            cbYesShowOnPage.Checked = true;
             try
             {
                 var lista = CategoryManager.GetCategories();
@@ -47,78 +47,67 @@ public partial class Adminproduct : System.Web.UI.Page
         int amount;
         int price;
 
-        if (int.TryParse(txtAmount.Text, out amount) && int.TryParse(txtPrice.Text, out price) && Page.IsValid)
+        if (!int.TryParse(txtAmount.Text, out amount) && !int.TryParse(txtPrice.Text, out price) && !Page.IsValid)
         {
-            try
+            lblMessageText.Text = "Du måste fylla i antal produkter och pris.";
+            return;
+        }
+        try
+        {
+            if (txtName.Text.Length < 2)
             {
-                var insertProduct = new ProductLINQ();
-                if (txtName.Text.Length < 2)
+                lblMessageText.Text = "Produktnamnet måste bestå av minst två tecken";
+            }
+            var insertProduct = new ProductItem();
+            if (txtDiscount.Text.Length > 0)
+            {
+                if (byte.TryParse(txtDiscount.Text, out discount) && byte.Parse(txtDiscount.Text) < 99)
                 {
-                    lblMessageText.Text = "Produktnamnet måste bestå av minst två tecken";
-                }
-
-                if (txtDiscount.Text.Length > 0)
-                {
-                    if (byte.TryParse(txtDiscount.Text, out discount) && byte.Parse(txtDiscount.Text) < 99)
-                    {
-                        insertProduct.Discount = discount;
-                    }
-                    else
-                    {
-                        lblMessageText.Text = "Rabatten kan bara innehålla ett nummer mellan 1-99";
-                    }
+                    insertProduct.Discount = discount;
                 }
                 else
                 {
-                    insertProduct.Amount = amount;
-                    insertProduct.Description = txtDescription.Text;
-                    insertProduct.Featured = cbYesFeature.Checked;
-                    insertProduct.Name = txtName.Text;
-                    insertProduct.Price = price;
-                    insertProduct.ShowOnPage = cbYesShowOnPage.Checked;
-                    insertProduct.SubCategory = long.Parse(ddlCategory.SelectedValue);
-                    var insertFunc = new ProductManagerByLINQ();
-                    if (imageUpload.HasFile)
-                    {
-                        try
-                        {
-                            imageUpload.SaveAs(HttpContext.Current.Server.MapPath("~/images/Product/" + imageUpload.FileName));
-                        }
-                        catch (Exception)
-                        {
-
-                            lblMessageText.Text = "Det gick inte att ladda upp bilden, försök igen";
-                        }
-                    }
-
-
-
-                    ////TODO: Louise - aktivera det här när funktionen för att spara bilderna i databasen funkar.
-                    //try
-                    //{
-                    //    var newprodId = insertFunc.InsertProduct(insertProduct);
-                    //    ProductImageManager.InsertProductImage(newprodId, imageUpload.FileName);
-
-                    //}
-                    //catch (Exception)
-                    //{
-
-                    //    lblMessageText.Text = "Något gick fel, försök igen";
-                    //}
-
-                    lblMessageText.Text = "Produkten är sparad";
+                    lblMessageText.Text = "Rabatten kan bara innehålla ett nummer mellan 1-99";
                 }
             }
-            catch (Exception)
+            //spara produkten
+            insertProduct.Amount = amount;
+            insertProduct.Description = txtDescription.Text;
+            insertProduct.Featured = cbYesFeature.Checked;
+            insertProduct.Name = txtName.Text;
+            insertProduct.Price = int.Parse(txtPrice.Text);
+            insertProduct.ShowOnPage = cbYesShowOnPage.Checked;
+            insertProduct.SubCategoryId = long.Parse(ddlCategory.SelectedValue);
+
+            var insertFunc = new ProductManagerByLINQ().InsertProduct(insertProduct);
+
+            //spara bilden till mappen
+            if (imageUpload.HasFile)
             {
-                lblMessageText.Text = "Något gick fel, försök igen";
+                if (!imageUpload.PostedFile.ContentType.ToLower().StartsWith("image"))
+                {
+                    lblMessageText.Text = "Filen du försöker ladda upp är inte en bild, försök igen";
+                    return;
+                }
+                //lägga till bildnamnet i databasen
+                var imageName = StringHelper.RandomString(5) + "_" + insertFunc + "_" + imageUpload.FileName.Replace(" ", "_");
+                var imageid = ProductImageManager.InsertProductImage(insertFunc, imageName);
+                imageUpload.SaveAs(HttpContext.Current.Server.MapPath("~/images/Product/" + imageName));
+                //resize bild och lägg den i thumbs mappen
+                System.Drawing.Image imageToCrop = System.Drawing.Image.FromFile(Server.MapPath("images/Product/" + imageName));
+                System.Drawing.Image thumbImage = ProductImageManager.FixedSize(imageToCrop);
+                thumbImage.Save(Server.MapPath("images/Product/Thumbs/" + imageName));
+                thumbImage.Dispose();
             }
+             lblMessageText.Text = "Produkten är sparad";
         }
-        else
+        catch (Exception)
         {
-            lblMessageText.Text = "Du måste fylla i antal produkter och pris.";
+            lblMessageText.Text = "Något gick fel, försök igen";
         }
     }
- 
- 
+
+
+
+
 }

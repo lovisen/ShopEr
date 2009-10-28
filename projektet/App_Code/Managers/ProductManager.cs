@@ -173,12 +173,12 @@ public class ProductManager : IProductManager
         throw new NotImplementedException();
     }
 
-    public long InsertProduct(ProductLINQ insertProduct)
+    public long InsertProduct(ProductItem insertProduct)
     {
         throw new NotImplementedException();
     }
 
-    public bool UpdateProduct(ProductLINQ productToUpdate)
+    public bool UpdateProduct(ProductItem productToUpdate)
     {
         throw new NotImplementedException();
     }

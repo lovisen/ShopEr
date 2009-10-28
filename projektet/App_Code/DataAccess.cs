@@ -138,7 +138,7 @@ public static class DataAccess
         //returnera raderna
         return affectedRows;
     }
-    //Scalar, returnerar ett ända resultat som sträng
+    //Scalar, returnerar ett enda resultat som sträng
     public static string ExecuteScalar(DbCommand command)
     {
         //värdet som ska returneras

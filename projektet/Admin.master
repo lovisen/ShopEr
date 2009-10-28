@@ -37,7 +37,8 @@
         <div id="category">
             MENY<br />
             <li><a href="AdminCategory.aspx">Kategorihantering</a></li>
-            <li><a href="Adminproduct.aspx">Produkthantering</a></li>
+            <li><a href="Adminproduct.aspx">Lägga till produkt</a></li>
+            <li><a href="AdminUpdateProduct.aspx">Uppdatera produkt</a></li>
             <li><a href="Admincustomer.aspx">Kundhantering</a></li>
             <li><a href="AdminOrder.aspx">Orderhantering</a></li>
             <li><a href="AdminStatic.aspx">Statistik</a></li>

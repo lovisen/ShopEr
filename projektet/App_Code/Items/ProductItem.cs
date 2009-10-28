@@ -31,6 +31,7 @@ public class ProductItem : BaseStructure<long>
     public int Price { get; set; }
     public bool ShowOnPage { get; set; }
     public List<ProductImageItem> Images { get; set; }
+    public long SubCategoryId { get; set; }
 
-
+    
 }

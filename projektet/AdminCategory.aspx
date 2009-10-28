@@ -50,6 +50,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+  <div id="contentAdmin">
     <h1>
         Kategorihantering:</h1>
     <br />
@@ -57,7 +58,7 @@
     <asp:Label ID="lblRespons" runat="server" ForeColor="#33CC33"></asp:Label>
     <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
     <br />
-    LÄGG TILL<img alt="" src="images/Add.png" /><table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+   <img alt="" src="images/Add.png" /> LÄGG TILL<table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
         <tr>
             <td class="style3">
                 Lägg till en huvudkategori:
@@ -97,7 +98,7 @@
         </tr>
     </table>
     <br />
-    UPPDATERA<img alt="" src="images/Update.png" /><table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+   <img alt="" src="images/Update.png" /> UPPDATERA<table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
         <tr>
             <td class="style5">
                 Uppdatera huvudkategori:
@@ -145,7 +146,7 @@
     
     
       <br />
-    DELETE<img alt="" src="images/Delete.png" /><table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+   <img alt="" src="images/Delete.png" /> DELETE<table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
         <tr>
             <td class="style3">
                 Tabort en huvudkategori:
@@ -189,7 +190,7 @@
             </td>
         </tr>
     </table>
-    
+    </div>
     
     
 </asp:Content>
