@@ -128,7 +128,7 @@ public partial class AdminUpdateProduct : System.Web.UI.Page
             imageUpload.SaveAs(HttpContext.Current.Server.MapPath("~/images/Product/" + imageName)); 
           //resize bild och lägg den i thumbs mappen
             System.Drawing.Image imageToCrop = System.Drawing.Image.FromFile(Server.MapPath("images/Product/" + imageName));
-            System.Drawing.Image thumbImage = ProductImageManager.FixedSize(imageToCrop);
+            System.Drawing.Image thumbImage = ProductImageManager.FixedSizeThumb(imageToCrop);
             thumbImage.Save(Server.MapPath("images/Product/Thumbs/" + imageName));
             thumbImage.Dispose();            
         }

@@ -14,16 +14,16 @@ using System.Xml.Linq;
 using System.Drawing.Drawing2D;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 public partial class Adminproduct : System.Web.UI.Page
 {
-
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
         {
             cbYesShowOnPage.Checked = true;
             try
-            {
+            { 
                 var lista = CategoryManager.GetCategories();
                 foreach (CategoryItem c in lista)
                 {
@@ -81,7 +81,6 @@ public partial class Adminproduct : System.Web.UI.Page
 
             var insertFunc = new ProductManagerByLINQ().InsertProduct(insertProduct);
 
-            //spara bilden till mappen
             if (imageUpload.HasFile)
             {
                 if (!imageUpload.PostedFile.ContentType.ToLower().StartsWith("image"))
@@ -92,14 +91,26 @@ public partial class Adminproduct : System.Web.UI.Page
                 //lägga till bildnamnet i databasen
                 var imageName = StringHelper.RandomString(5) + "_" + insertFunc + "_" + imageUpload.FileName.Replace(" ", "_");
                 var imageid = ProductImageManager.InsertProductImage(insertFunc, imageName);
+                //spara bilden till mappen
                 imageUpload.SaveAs(HttpContext.Current.Server.MapPath("~/images/Product/" + imageName));
                 //resize bild och lägg den i thumbs mappen
                 System.Drawing.Image imageToCrop = System.Drawing.Image.FromFile(Server.MapPath("images/Product/" + imageName));
-                System.Drawing.Image thumbImage = ProductImageManager.FixedSize(imageToCrop);
+                System.Drawing.Image thumbImage = ProductImageManager.FixedSizeThumb(imageToCrop);
                 thumbImage.Save(Server.MapPath("images/Product/Thumbs/" + imageName));
                 thumbImage.Dispose();
+
+                //// TODO - Louise - fråga Magnus varför det ej går att deleta bilden så jag kan spara över den. eller finns det nåt
+                //// bättre sätt att lösa detta på? annars så får vi strunta i att bilderna kan bli hur stora som helst.
+
+                ////resize stor bild och spara över den existerande i image mappen
+                //System.Drawing.Image bigImageToCrop = System.Drawing.Image.FromFile(Server.MapPath("images/Product/" + imageName));
+                //System.Drawing.Image bigImage = ProductImageManager.FixedSizeImage(bigImageToCrop);
+                //File.Delete(Server.MapPath("images/Product/" + imageName));
+                //bigImage.Save(Server.MapPath("images/Product/" + imageName));
+                //bigImage.Dispose();
+
             }
-             lblMessageText.Text = "Produkten är sparad";
+            lblMessageText.Text = "Produkten är sparad";
         }
         catch (Exception)
         {

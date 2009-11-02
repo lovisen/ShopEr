@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="SearchProduct.ascx.cs" Inherits="UserControls_SearchProduct" %>
    <p>
-            Sök efter produkt för att redigera:</p>
+            Sök efter produkt för att uppdatera</p>
 <asp:TextBox ID="txtSearch" runat="server" ></asp:TextBox>
                         <asp:Button ID="btnSearch" runat="server" Text="Sök" onclick="btnSearch_Click" />
                         <asp:Label ID="lblSearchMessage" runat="server" />

@@ -119,11 +119,11 @@ public class ProductImageManager
         return IsChangedRowFromExecutionSuccessful(comm);
     }
 
-    public static System.Drawing.Image FixedSize(System.Drawing.Image imgPhoto)
+    public static System.Drawing.Image FixedSizeThumb(System.Drawing.Image imgPhoto)
     {
         //ändra önskad width och height här
-        int Width = 100;
-        int Height = 100;
+        int Width = 140;
+        int Height = 140;
         int sourceWidth = imgPhoto.Width;
         int sourceHeight = imgPhoto.Height;
         int sourceX = 0;
@@ -170,5 +170,66 @@ public class ProductImageManager
 
         grPhoto.Dispose();
         return bmPhoto;
+    }
+    public static System.Drawing.Image FixedSizeImage(System.Drawing.Image imgPhoto)
+    {
+        //ändra önskad width och height här
+        int Width = 500;
+        int Height = 500;
+        if (imgPhoto.Width < 500 && imgPhoto.Height < 500)
+        {
+            return imgPhoto;
+            
+        }
+        else
+        {
+            int sourceWidth = imgPhoto.Width;
+            int sourceHeight = imgPhoto.Height;
+            int sourceX = 0;
+            int sourceY = 0;
+            int destX = 0;
+            int destY = 0;
+
+            float nPercent = 0;
+            float nPercentW = 0;
+            float nPercentH = 0;
+
+            nPercentW = ((float)Width / (float)sourceWidth);
+            nPercentH = ((float)Height / (float)sourceHeight);
+            if (nPercentH < nPercentW)
+            {
+                nPercent = nPercentH;
+                destX = System.Convert.ToInt16((Width -
+                              (sourceWidth * nPercent)) / 2);
+            }
+            else
+            {
+                nPercent = nPercentW;
+                destY = System.Convert.ToInt16((Height -
+                              (sourceHeight * nPercent)) / 2);
+            }
+
+            int destWidth = (int)(sourceWidth * nPercent);
+            int destHeight = (int)(sourceHeight * nPercent);
+
+            Bitmap bmPhoto = new Bitmap(Width, Height,
+                              PixelFormat.Format24bppRgb);
+            bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+                             imgPhoto.VerticalResolution);
+
+            Graphics grPhoto = Graphics.FromImage(bmPhoto);
+            grPhoto.Clear(Color.Black);
+            grPhoto.InterpolationMode =
+                    InterpolationMode.HighQualityBicubic;
+
+            grPhoto.DrawImage(imgPhoto,
+                new Rectangle(destX, destY, destWidth, destHeight),
+                new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+                GraphicsUnit.Pixel);
+
+            grPhoto.Dispose();
+            return bmPhoto;
+        }
+       
     }
 }

@@ -25,7 +25,7 @@
         <p>
            <img alt="Add" src="images/Add.png" />
             LÄGG TILL</p>
-        <div class="updateProdTable">
+        <div class="admintables">
             <table>
                 <tr>
                     <td dir="ltr">
@@ -101,11 +101,11 @@
                 </tr>
                 <tr>
                     <td class="style2">
-                        Välj bild:
+                        Välj bild: (300px * 250px)
                     </td>
                     <td class="style2">
-                        <asp:FileUpload ID="imageUpload" runat="server" />
-                    </td>
+                        <asp:FileUpload ID="imageUpload" runat="server" /> 
+                   </td>
                 </tr>
                 <tr>
                     <td>
