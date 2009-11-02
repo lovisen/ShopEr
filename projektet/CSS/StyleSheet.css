@@ -54,7 +54,7 @@ img
 {
 	width: 200px;
 	background-color: #eff0d8;
-	background-image: url(  '../images/bg.jpg' );
+	background-image: url(    '../images/bg.jpg' );
 	background-repeat: repeat-x;
 	color: White;
 	float: left;
@@ -86,25 +86,43 @@ img
 
 #nyhet
 {
-	background-image:url(image/meny.jpg);
+	background-image: url(image/meny.jpg);
 	background-repeat: repeat-x;
-	height:15px;
-	width:200px;
+	height: 15px;
+	width: 200px;
 }
 
 #login
 {
-	float:right;
-	margin: 0 10px 0 0;	
-	display:inline;
+	float: right;
+	margin: 0 10px 0 0;
+	display: inline;
 }
-#search 
+#search
 {
 	padding: 25px;
-	 margin-left: 100px;
-	  list-style: none;
-	}
+	margin-left: 100px;
+	list-style: none;
+}
 
+#CategoryAdmin
+{
+	width: 832px;
+	height: 600px;
+}
+
+#CategoryAdmin table
+{
+	border-bottom-style: dotted;
+	width: 600px;
+	height: 113px;
+	padding:10px;
+	border-left-width: 1px;
+	border-right-width: 1px;
+	border-top-width: 5px;
+	border-bottom-width: 1px;
+	margin-top:5px;
+}
 
 
 

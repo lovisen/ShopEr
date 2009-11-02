@@ -1,86 +1,50 @@
-ï»¿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminCategory.aspx.cs"
+<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminCategory.aspx.cs"
     Inherits="AdminCategory" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <style type="text/css">
-        .style1
-        {
-            width: 100%;
-        }
-        .style2
-        {
-            width: 232px;
-        }
-        .style3
-        {
-            width: 232px;
-            height: 40px;
-        }
-        .style4
-        {
-            height: 40px;
-        }
-        .style5
-        {
-            width: 232px;
-            height: 25px;
-        }
-        .style6
-        {
-            height: 25px;
-        }
-        .style7
-        {
-            width: 232px;
-            height: 47px;
-        }
-        .style8
-        {
-            height: 47px;
-        }
-        .style9
-        {
-            width: 232px;
-            height: 39px;
-        }
-        .style10
-        {
-            height: 39px;
-        }
-    </style>
+
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
     </asp:ScriptManager>
-    <h1>
-        Kategorihantering:</h1>
+   
+    
+        <h1>Kategorihantering:</h1>
+        <div id="CategoryAdmin"> 
                     <p>
                         &nbsp;</p>
                     <p>
-                <asp:Label ID="lblRespons" runat="server" Font-Bold="True"></asp:Label>
+                        <asp:Label ID="lblGreenFeedbck" runat="server" BackColor="#CCFFCC" 
+                            BorderStyle="Solid" BorderWidth="1px"></asp:Label>
+                        <asp:Label ID="lblRedFeeback" runat="server" BackColor="#FFCCCC" 
+                            BorderColor="#CC0000" BorderStyle="Solid" BorderWidth="1px"></asp:Label>
                     </p>
     <br />
     <br />
     
     <br />
-    <img alt="" src="images/Add.png" /> LÃ„GG TILL<table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+    <img alt="" src="images/Add.png" /> LÄGG TILL
+    
+    <table>
         <tr>
-            <td class="style3">
-                LÃ¤gg till en huvudkategori:
+            <td>
+                Lägg till en huvudkategori:
             </td>
-            <td class="style4">
+            <td>
                 <asp:TextBox ID="txtInsertCategory" runat="server" Width="200px"></asp:TextBox>
                 <asp:Button ID="btnInsertCategory" runat="server" OnClick="btnInsertCategory_Click"
-                    Text="LÃ¤gg till" />
+                    Text="Lägg till" />
             </td>
         </tr>
         <tr>
-            <td class="style2">
-                LÃ¤gg tll en under kategori:
+            <td>
+                Lägg tll en under kategori:
             </td>
             <td>
-                VÃ¤lj en huvudkategori som din underkategori skall ligga under:<br />
-                <asp:DropDownList ID="DropdownCateory" runat="server" DataSourceID="ObjectDataSource1"
+                Välj en huvudkategori som din underkategori skall ligga under:<br />
+                <asp:DropDownList ID="DropdownCateory" runat="server" 
                     DataTextField="CategoryName" DataValueField="Id" Height="20px" 
                     Width="134px">
                 </asp:DropDownList>
@@ -90,15 +54,16 @@
                         <asp:Parameter DefaultValue="0" Name="parentCategoryId" Type="Int64" />
                     </SelectParameters>
                 </asp:ObjectDataSource>
+                <%--DataSourceID="ObjectDataSource1"--%>
             </td>
         </tr>
         <tr>
-            <td class="style2">
+            <td>
                 &nbsp;
             </td>
             <td>
                 <asp:TextBox ID="txtInsertChildCategory" runat="server" Width="200px"></asp:TextBox>
-                <asp:Button ID="btnInsertChildCategory" runat="server" Text="LÃ¤gg till" OnClick="btnInsertChildCategory_Click1" />
+                <asp:Button ID="btnInsertChildCategory" runat="server" Text="Lägg till" OnClick="btnInsertChildCategory_Click1" />
                 
             </td>
         </tr>
@@ -107,17 +72,17 @@
     <img alt="" src="images/Update.png" />UPPDATERA
                 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-    <table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+    <table>
         <tr>
-            <td class="style5">
+            <td>
                 Uppdatera huvudkategori:
             </td>
             
             
-            <td class="style6">
-                &nbsp;VÃ¤lj vilken kategori som skall uppdateras<br />
+            <td>
+                &nbsp;Välj vilken kategori som skall uppdateras<br />
                 <asp:DropDownList ID="DropDownCategoryUpdate" runat="server" 
-                    AutoPostBack="true" DataSourceID="ObjectDataSource1" 
+                    AutoPostBack="true" 
                     DataTextField="CategoryName" DataValueField="Id" Height="20px" 
                     OnSelectedIndexChanged="DropDownCategoryUpdate_SelectedIndexChanged" 
                     Width="134px">
@@ -125,26 +90,24 @@
             </td>
         </tr>
         <tr>
-            <td class="style7">
+            <td>
             </td>
-            <td class="style8">
+            <td>
 
                 <asp:TextBox ID="txtUpdateCategory" runat="server" Width="200px"></asp:TextBox>
 
                 <asp:Button ID="btnUpdateCategory" runat="server" Text="Uppdatera" 
                     onclick="btnUpdateCategory_Click" />
 
-                <asp:Label ID="lblFeedback" runat="server" Font-Bold="True"></asp:Label>
-
             </td>
 
         </tr>
         
         <tr>
-            <td class="style9">
+            <td>
                 Uppdatera underkategori:
             </td>
-            <td class="style10">
+            <td>
                 <asp:DropDownList ID="DropDownList2" runat="server" 
                      DataTextField="CategoryName" 
                     DataValueField="Id" Height="20px" Width="134px" 
@@ -153,21 +116,19 @@
             </td>
         </tr>
         <tr>
-            <td class="style2">
+            <td>
                 &nbsp;
             </td>
             <td>
                 <asp:TextBox ID="txtUpdateChildCategory" runat="server" Width="200px"></asp:TextBox>
-                <table class="style1">
-                    <tr>
-                        <td>
-                            <asp:CheckBox ID="chbSkallIntesynas" runat="server" 
-                                Text="Denna kategori ska inte synas pÃ¥ sidan:" />
-                            &nbsp;<asp:Button ID="btnUpdateChildCategory" runat="server" 
-                                onclick="btnUpdateChildCategory_Click" Text="Uppdatera" />
-                        </td>
-                    </tr>
-                </table>
+ 
+                    <br />
+                <asp:CheckBox ID="chbSkallIntesynas" runat="server" 
+                    Text="Denna kategori ska inte synas på sidan:" />
+                <asp:Button ID="btnUpdateChildCategory" runat="server" 
+                    onclick="btnUpdateChildCategory_Click" Text="Uppdatera" />
+
+ 
             </td>
         </tr>
       
@@ -182,6 +143,6 @@
                 </asp:UpdatePanel> 
     
     
-      <br />
+      <br /></div>
     
     </asp:Content>
