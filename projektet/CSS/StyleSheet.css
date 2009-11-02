@@ -100,6 +100,7 @@ img
 }
 #search
 {
+
 	padding: 25px;
 	margin-left: 100px;
 	list-style: none;
@@ -122,7 +123,32 @@ img
 	border-top-width: 5px;
 	border-bottom-width: 1px;
 	margin-top:5px;
+
+	margin-top: 30px;
+
 }
 
+.searchlist
+{
+	margin: 10px 0 30px 0;
 
+}
 
+.admintables
+{	
+	border-style: dotted;
+	border-width: 1px;
+	margin-bottom: 30px;
+	padding: 10px;
+}
+
+#contentAdmin
+{
+	width: 70%;
+	margin: 20px;
+
+}
+.imageReapeter li
+{
+	display: inline;
+	}

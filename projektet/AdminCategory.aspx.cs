@@ -143,4 +143,59 @@ public partial class AdminCategory : System.Web.UI.Page
         lblRedFeeback.Visible = true;
 
     }
+
+    //protected void btnUpdateCategory_Click(object sender, EventArgs e)
+    //{
+    //    if (txtUpdateCategory.Text.Length > 1)
+    //    {
+    //        CategoryItem c = new CategoryItem();
+    //        c.CategoryName = txtUpdateCategory.Text;
+    //        c.Id = Convert.ToInt64(DropDownCategoryUpdate.SelectedValue);
+            
+    //        if (CategoryManager.UpdateCategory(c))
+    //        {
+    //            lblFeedback.Text = "Kategorin är uppdaterad";
+    //            txtUpdateCategory.Text = "";
+    //        }
+    //    }
+    //    else lblFeedback.Text = "Uppdateringen misslyckades";
+
+        
+    //}
+
+    //protected void DropDownCategoryUpdate_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    txtUpdateCategory.Text = DropDownCategoryUpdate.SelectedItem.Text;
+    //    DropDownList2.DataSource = CategoryManager.GetChildCategories(Convert.ToInt64(DropDownCategoryUpdate.SelectedValue));
+    //    DropDownList2.DataBind();
+        
+    //}
+    //protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
+    //{
+    //    txtUpdateChildCategory.Text = DropDownList2.SelectedItem.Text;
+    //    chbSkallIntesynas.Checked = !CategoryManager.GetShowOnPage(long.Parse(DropDownList2.SelectedValue));
+    //}
+
+
+    //protected void btnUpdateChildCategory_Click(object sender, EventArgs e)
+    //{
+    //    if (txtUpdateChildCategory.Text.Length > 1)
+
+    //    {
+    //        CategoryItem c = new CategoryItem();
+    //        c.CategoryName = txtUpdateChildCategory.Text;
+    //        c.Id = Convert.ToInt64(DropDownList2.SelectedValue);
+
+    //        if (CategoryManager.UpdateChildCategory(c))
+    //        {
+    //            lblFeedback.Text = "Uppdateringen lyckades";
+    //            txtUpdateChildCategory.Text = "";
+                    
+    //        }
+    //    }
+    //    else lblFeedback.Text = "Uppdateringen misslyckades";
+        
+    //}
+
+
 }
