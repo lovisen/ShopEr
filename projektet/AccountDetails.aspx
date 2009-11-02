@@ -30,6 +30,8 @@
     <asp:TextBox ID="txtMobile" runat="server" Width="260px"></asp:TextBox><br />
     <asp:Label ID="lblEpost" runat="server" Text="E-post:"></asp:Label><br />
     <asp:TextBox ID="txtEpost" runat="server" Width="260px"></asp:TextBox><br />
+    <asp:Label ID="lblNewsLetter" runat="server" Text="Nyhetsbrev:"></asp:Label><br />
+    <asp:CheckBox ID="chbNewsLetter" runat="server" />
     
     <asp:Button ID="btnSubmit" runat="server" Text="Ändra Uppgifter" OnClick="btnSubmit_Click" /><br />
     <br /><br />

@@ -102,7 +102,7 @@ public partial class Registation : System.Web.UI.Page
             c.Country = new CountryItem();
             c.Country.Id = Convert.ToInt64(ddlCountry.SelectedValue);
             c.DateOfBirth = txtSocialNumber.Text;
-            c.NewsLetter = false;
+            c.NewsLetter = chbNewsLetter.Checked;
             c.Role = new RoleItem();
             c.City = txtCity.Text;
             c.Role.Id = 1;

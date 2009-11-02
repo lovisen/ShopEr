@@ -21,6 +21,16 @@ public class CountryItem : BaseStructure<long>
 		// TODO: Add constructor logic here
 		//
 	}
-
-    public string CountryName { get; set; }
+    private string _countryName;
+    public string CountryName
+    {
+        get
+        {
+            return _countryName;
+        }
+        set
+        {
+            _countryName = value.Trim();
+        }
+    }
 }

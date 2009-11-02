@@ -143,6 +143,10 @@ public class ProductManager : IProductManager
 
     public List<ProductItem> SearchProducts(string searchString)
     {
+        if (searchString == "" || searchString == null)
+        {
+            return null;
+        }
         DbCommand comm = DataAccess.CreateCommand();
 
         comm.CommandText = "SELECT Id, Name, Price FROM Product WHERE Name LIKE @searchString OR Description LIKE @searchString";

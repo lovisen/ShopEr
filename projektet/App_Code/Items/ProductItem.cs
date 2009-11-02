@@ -23,9 +23,31 @@ public class ProductItem : BaseStructure<long>
 		//
     }
 
-    public string Name { get; set; }
+    private string _name;
+    public string Name
+    {
+        get
+        {
+            return _name;
+        }
+        set
+        {
+            _name = value.Trim();
+        }
+    }
     public int Amount { get; set; }
-    public string Description { get; set; }
+    private string _description;
+    public string Description
+    {
+        get
+        {
+            return _description;
+        }
+        set
+        {
+            _description = value.Trim();
+        }
+    }
     public bool Featured { get; set; }
     public int Discount { get; set; }
     public int Price { get; set; }

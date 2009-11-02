@@ -112,6 +112,13 @@
         </tr>
         <tr>
             <td class="style5">
+                    <asp:Label ID="Label2" runat="server" Text="Jag vill ha nyhetsbrev"></asp:Label></td>
+            <td class="style6">
+                    <asp:CheckBox ID="chbNewsLetter" runat="server" />
+            </td>
+        </tr>
+        <tr>
+            <td class="style5">
                 &nbsp;</td>
             <td class="style6">
                 <asp:Button ID="btnSubmit" runat="server" Text="Registrera" 

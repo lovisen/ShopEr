@@ -13,7 +13,7 @@ using System.Xml.Linq;
 
 public partial class AccountDetails : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Init(object sender, EventArgs e)
     {
         if (!UserAuthentication.IsAuthenticated())
         {
@@ -31,6 +31,7 @@ public partial class AccountDetails : System.Web.UI.Page
             txtSurName.Text = c.LastName;
             txtTelephone.Text = c.Phone;
             txtCity.Text = c.City;
+            chbNewsLetter.Checked = c.NewsLetter;
         }
     }
     protected void btnSubmit_Click(object sender, EventArgs e)
@@ -97,12 +98,12 @@ public partial class AccountDetails : System.Web.UI.Page
             c.Phone = txtTelephone.Text;
             //c.Password = StringHelper.HashWithMD5(txtPassword.Text);
             c.ZipCode = txtPostNumber.Text;
-            c.Activated = false;
-            c.ActivationCode = StringHelper.RandomString(20);
+            //c.Activated = false;
+            //c.ActivationCode = StringHelper.RandomString(20);
             c.Country = new CountryItem();
             c.Country.Id = Convert.ToInt64(ddlCountry.SelectedValue);
             c.DateOfBirth = txtSocialNumber.Text;
-            c.NewsLetter = false;
+            c.NewsLetter = chbNewsLetter.Checked;
             c.Role = new RoleItem();
             c.City = txtCity.Text;
             c.Id = Convert.ToInt64( UserAuthentication.getUserID());

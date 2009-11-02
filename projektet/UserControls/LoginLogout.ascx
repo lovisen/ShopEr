@@ -5,10 +5,10 @@
         <ul>      
             <li style="margin-top: 5px; margin-left: 30px;">
                 Mail:
-                <asp:TextBox ID="txtUsername" runat="server" Width="130px" Text="Användarnamn" onfocus="this.value='a@a.se';" onclick="this.value='';"> </asp:TextBox></li>
+                <asp:TextBox ID="txtUsername" runat="server" Width="130px" Text="Användarnamn" onfocus="this.value='';" onclick="this.value='';"> </asp:TextBox></li>
             <li style="margin-top: 5px; margin-left: 5px;">
                 Lösenord: 
-                <asp:TextBox ID="txtPassword" runat="server" Width="130px" TextMode="Password" Text="Lösenord" onclick="this.value='123';"></asp:TextBox></li>
+                <asp:TextBox ID="txtPassword" runat="server" Width="130px" TextMode="Password" Text="Lösenord" onclick="this.value='';"></asp:TextBox></li>
             <li style="margin-top: 4px; margin-left: 5px;">
                 <asp:Button ID="btnLogin" runat="server" Text="Logga in" OnClick="btnLogin_Click" /></li>
             <li style="margin-top: 4px; margin-left: 5px;">
