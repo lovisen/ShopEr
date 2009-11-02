@@ -1,7 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminUpdateProduct.aspx.cs" Inherits="AdminUpdateProduct" Title="ShopEr Admin - Uppdatera produkt" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="AdminUpdateProduct.aspx.cs"
+    Inherits="AdminUpdateProduct" Title="ShopEr Admin - Uppdatera produkt" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-   <style type="text/css">
+<%@ Register Src="UserControls/SearchProduct.ascx" TagName="SearchProduct" TagPrefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
+    <style type="text/css">
         .style1
         {
             width: 100%;
@@ -12,114 +14,130 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server"> <h2>
-        Produkthantering:</h2>
-    <table class="style1" style="padding: 50px; border-style: dotted; border-width: 2px;
-        width: 600px; margin-left: 100px; margin-top: 50px;" title="Produkthantering">
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="lblMessageTitle" runat="server" Text="Meddelande:"></asp:Label>
-            </td>
-            <td>
-                <asp:Label ID="lblMessageText" runat="server"></asp:Label>
-            </td>
-        </tr>
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="Label1" runat="server" Text="Produktnamn:"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="txtName" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName">*</asp:RequiredFieldValidator>
-
-            </td>
-        </tr>
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="Label4" runat="server" Text="Antal produkter i lager:"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="txtAmount" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
-                    ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtAmount">*</asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="Label5" runat="server" Text="Rabatt:"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="txtDiscount" runat="server" Width="300px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="Label6" runat="server" Text="Pris:"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="txtPrice" runat="server" Width="300px"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
-                    ControlToValidate="txtPrice">*</asp:RequiredFieldValidator>
-            </td>
-        </tr>
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="Label7" runat="server" Text="Featured:"></asp:Label>
-            </td>
-            <td>
-                <asp:CheckBox ID="cbYesFeature" runat="server" Text=" Ja" />
-                       </td>
-        </tr>
-        <tr>
-            <td dir="ltr">
-                <asp:Label ID="Label8" runat="server" Text="Visa på sida:"></asp:Label>
-            </td>
-            <td>
-                <asp:CheckBox ID="cbYesShowOnPage" runat="server" Text=" Ja" />
-              
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label2" runat="server" Text="Kategori:"></asp:Label>
-            </td>
-            <td>
-                <asp:DropDownList ID="ddlCategory" runat="server" >
-                </asp:DropDownList>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Label ID="Label3" runat="server" Text="Beskrivning:"></asp:Label>
-            </td>
-            <td>
-                <asp:TextBox ID="txtDescription" runat="server" Height="134px" TextMode="MultiLine"
-                    Width="300px"></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="style2">
-                Välj bild:
-            </td>
-            <td class="style2">
-                <asp:FileUpload ID="imageUpload" runat="server" />
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <asp:Button ID="btnUpdateProduct" runat="server" Text="Uppdatera produkt" 
-                    onclick="btnUpdateProduct_Click" />
-            </td>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
-    <br />
-    <br />
-    <li style="padding: 25px; margin-left: 60px; list-style: none;">
-        <asp:TextBox ID="txtSearch" runat="server" Height="23px" Width="263px"></asp:TextBox>
-        <asp:Button ID="btbSearch" runat="server" Text="SÖK PRODUKT" Height="28px" /></li>
-    <b style="margin-left: 65px; padding: 25px;">Resultat:</b>
-    <asp:PlaceHolder ID="PlaceHolder1" runat="server"></asp:PlaceHolder>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <div id="contentAdmin">
+        <h1>
+            Produkthantering:</h1>
+        <br />
+        <br />
+        <asp:Label ID="lblMessageText" runat="server"></asp:Label>
+        <br />
+        <p>
+            <img alt="Update" src="images/Update.png" />
+            UPPDATERA</p>
+        <div class="admintables">
+            <table>
+                <tr>
+                    <td dir="ltr">
+                        <asp:Label ID="Label1" runat="server" Text="Produktnamn:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtName" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator1" runat="server" ErrorMessage="*" ControlToValidate="txtName"
+                            ValidationGroup="updateProduct">*</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr">
+                        <asp:Label ID="Label4" runat="server" Text="Antal produkter i lager:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtAmount" runat="server" Width="300px"></asp:TextBox><asp:RequiredFieldValidator
+                            ID="RequiredFieldValidator2" runat="server" ErrorMessage="*" ControlToValidate="txtAmount"
+                            ValidationGroup="updateProduct">*</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr">
+                        <asp:Label ID="Label5" runat="server" Text="Rabatt:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtDiscount" runat="server" Width="300px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr">
+                        <asp:Label ID="Label6" runat="server" Text="Pris:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtPrice" runat="server" Width="300px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
+                            ControlToValidate="txtPrice" ValidationGroup="updateProduct">*</asp:RequiredFieldValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr">
+                        <asp:Label ID="Label7" runat="server" Text="Featured:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="cbYesFeature" runat="server" Text=" Ja" />
+                    </td>
+                </tr>
+                <tr>
+                    <td dir="ltr">
+                        <asp:Label ID="Label8" runat="server" Text="Visa på sida:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="cbYesShowOnPage" runat="server" Text=" Ja" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label2" runat="server" Text="Kategori:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="ddlCategory" runat="server">
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label3" runat="server" Text="Beskrivning:"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="txtDescription" runat="server" Height="134px" TextMode="MultiLine"
+                            Width="300px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style2">
+                    Välj bild: (300px * 250px)
+                    </td>
+                    <td class="style2">
+                        <asp:FileUpload ID="imageUpload" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Button ID="btnUpdateProduct" runat="server" Text="Uppdatera produkt" OnClick="btnUpdateProduct_Click"
+                            ValidationGroup="updateProduct" />
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+            <br />  <br />
+            <asp:Repeater ID="Repeater1" runat="server">
+                <HeaderTemplate>
+                    <h3>
+                        Produktens bilder</h3>
+                  <br />
+                    <ul class="imageReapeter">
+                </HeaderTemplate>
+                <ItemTemplate>
+                    <li>
+                        <img src='images/Product/Thumbs/<%#Eval("ImageURL") %>' alt='<%#Eval("ImageURL") %>' />
+                        <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%#Eval("Id") %>'
+                            OnClick="DeleteImage">Ta bort</asp:LinkButton></li>
+                </ItemTemplate>
+                <FooterTemplate>
+                    </ul>
+                </FooterTemplate>
+            </asp:Repeater>
+        </div>
+        <div id="search">
+            <uc1:SearchProduct ID="SearchProduct1" runat="server" />
+        </div>
+    </div>
 </asp:Content>
-

@@ -50,14 +50,20 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
     <h1>
         Kategorihantering:</h1>
+                    <p>
+                        &nbsp;</p>
+                    <p>
+                <asp:Label ID="lblRespons" runat="server" Font-Bold="True"></asp:Label>
+                    </p>
     <br />
     <br />
-    <asp:Label ID="lblRespons" runat="server" ForeColor="#33CC33"></asp:Label>
-    <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
+    
     <br />
-    LÄGG TILL<img alt="" src="images/Add.png" /><table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+    <img alt="" src="images/Add.png" /> LÄGG TILL<table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
         <tr>
             <td class="style3">
                 Lägg till en huvudkategori:
@@ -93,19 +99,28 @@
             <td>
                 <asp:TextBox ID="txtInsertChildCategory" runat="server" Width="200px"></asp:TextBox>
                 <asp:Button ID="btnInsertChildCategory" runat="server" Text="Lägg till" OnClick="btnInsertChildCategory_Click1" />
+                
             </td>
         </tr>
     </table>
     <br />
-    UPPDATERA<img alt="" src="images/Update.png" /><table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
+    <img alt="" src="images/Update.png" />UPPDATERA
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+    <table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
         <tr>
             <td class="style5">
                 Uppdatera huvudkategori:
             </td>
+            
+            
             <td class="style6">
-                <asp:DropDownList ID="DropDownList1" runat="server" 
-                    DataSourceID="ObjectDataSource1" DataTextField="CategoryName" 
-                    DataValueField="CategoryName" Height="20px" Width="134px">
+                &nbsp;Välj vilken kategori som skall uppdateras<br />
+                <asp:DropDownList ID="DropDownCategoryUpdate" runat="server" 
+                    AutoPostBack="true" DataSourceID="ObjectDataSource1" 
+                    DataTextField="CategoryName" DataValueField="Id" Height="20px" 
+                    OnSelectedIndexChanged="DropDownCategoryUpdate_SelectedIndexChanged" 
+                    Width="134px">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -114,19 +129,26 @@
             </td>
             <td class="style8">
 
-                <asp:TextBox ID="TextBox3" runat="server" Width="200px"></asp:TextBox>
-                <asp:Button ID="Button1" runat="server" Text="Uppdatera" />
+                <asp:TextBox ID="txtUpdateCategory" runat="server" Width="200px"></asp:TextBox>
+
+                <asp:Button ID="btnUpdateCategory" runat="server" Text="Uppdatera" 
+                    onclick="btnUpdateCategory_Click" />
+
+                <asp:Label ID="lblFeedback" runat="server" Font-Bold="True"></asp:Label>
 
             </td>
+
         </tr>
+        
         <tr>
             <td class="style9">
                 Uppdatera underkategori:
             </td>
             <td class="style10">
                 <asp:DropDownList ID="DropDownList2" runat="server" 
-                    DataSourceID="ObjectDataSource1" DataTextField="SubCategories" 
-                    DataValueField="CategoryName" Height="20px" Width="134px">
+                     DataTextField="CategoryName" 
+                    DataValueField="Id" Height="20px" Width="134px" 
+                    onselectedindexchanged="DropDownList2_SelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
             </td>
         </tr>
@@ -135,61 +157,31 @@
                 &nbsp;
             </td>
             <td>
-                <asp:TextBox ID="TextBox2" runat="server" Width="200px"></asp:TextBox>
-                <asp:Button ID="btnUpdateChildCategory" runat="server" Text="Uppdatera" />
+                <asp:TextBox ID="txtUpdateChildCategory" runat="server" Width="200px"></asp:TextBox>
+                <table class="style1">
+                    <tr>
+                        <td>
+                            <asp:CheckBox ID="chbSkallIntesynas" runat="server" 
+                                Text="Denna kategori ska inte synas på sidan:" />
+                            &nbsp;<asp:Button ID="btnUpdateChildCategory" runat="server" 
+                                onclick="btnUpdateChildCategory_Click" Text="Uppdatera" />
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
       
     </table>
-    
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="DropDownCategoryUpdate" 
+                        EventName="SelectedIndexChanged" />
+                         <asp:AsyncPostBackTrigger ControlID="DropDownList2" 
+                        EventName="SelectedIndexChanged" />
+                </Triggers>
+                </asp:UpdatePanel> 
     
     
       <br />
-    DELETE<img alt="" src="images/Delete.png" /><table class="style1" frame="border" style="border-style: dotted; border-width: 1px">
-        <tr>
-            <td class="style3">
-                Tabort en huvudkategori:
-            </td>
-            <td class="style4">
-                <asp:DropDownList ID="DropDownList4" runat="server" 
-                    DataSourceID="ObjectDataSource3" DataTextField="CategoryName" 
-                    DataValueField="CategoryName" Height="20px" Width="134px">
-                </asp:DropDownList>
-                <asp:ObjectDataSource ID="ObjectDataSource3" runat="server" 
-                    SelectMethod="GetCategories" TypeName="CategoryManager">
-                </asp:ObjectDataSource>
-                <asp:Button ID="btnDelete" runat="server" Text="Ta bort" />
-            </td>
-        </tr>
-        <tr>
-            <td class="style2">
-                Tabort en under kategori:
-            </td>
-            <td>
-            
-                <asp:ObjectDataSource ID="ObjectDataSource2" runat="server" SelectMethod="GetChildCategories"
-                    TypeName="CategoryManager">
-                    <SelectParameters>
-                        <asp:Parameter DefaultValue="0" Name="parentCategoryId" Type="Int64" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
-            </td>
-        </tr>
-        <tr>
-            <td class="style2">
-                &nbsp;
-            </td>
-            <td>
-            
-                <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="ObjectDataSource1"
-                    DataTextField="CategoryName" DataValueField="Id" Height="20px" 
-                    Width="134px">
-                </asp:DropDownList>
-                <asp:Button ID="btnDeleteChildCategory" runat="server" Text="Ta bort" />
-            </td>
-        </tr>
-    </table>
     
-    
-    
-</asp:Content>
+    </asp:Content>

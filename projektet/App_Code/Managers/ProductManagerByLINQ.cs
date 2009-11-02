@@ -25,47 +25,58 @@ public class ProductManagerByLINQ : IProductManager
 
     #region IProductManager Members
 
-    public List<ProductItem> GetAllProducts()
+
+    public List<ProductItem> SearchProducts(string searchString)
     {
-        throw new NotImplementedException();
+        if (searchString.Length > 2)
+        {
+            searchString = searchString.Remove(2);
+        }
+
+        ShopErDataContext db = new ShopErDataContext();
+        try
+        {
+            var productList = from p in db.ProductLINQs
+                              where p.Name.StartsWith(searchString) || p.Name.Contains(searchString) && p.ShowOnPage == true
+                              select p;
+            List<ProductItem> productItemList = new List<ProductItem>();
+            foreach (ProductLINQ p in productList)
+            {
+                productItemList.Add((ProductItem)p);
+            }
+            return productItemList;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 
-    ProductItem IProductManager.GetProductById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public System.Collections.Generic.List<ProductItem> SearchProducts(string searchString)
-    {
-        throw new NotImplementedException();
-    }
-
-    public List<ProductItem> GetAllFeaturedProducts()
-    {
-        throw new NotImplementedException();
-    }
-
-    public long InsertProduct(ProductLINQ insertProduct)
+    public long InsertProduct(ProductItem prod)
     {
         ShopErDataContext db = new ShopErDataContext();
         try
         {
-            db.ProductLINQs.InsertOnSubmit((ProductLINQ)insertProduct);
+            ProductLINQ product = new ProductLINQ() { Amount = prod.Amount, Description = prod.Description, Discount = Convert.ToByte(prod.Discount), Featured = (bool)prod.Featured, Id = prod.Id, Name = prod.Name, Price = prod.Price, ShowOnPage = (bool)prod.ShowOnPage, SubCategory = prod.SubCategoryId };
+            db.ProductLINQs.InsertOnSubmit(product);
             db.SubmitChanges();
-            return insertProduct.Id;
+            return product.Id;
         }
         catch (Exception)
         {
             return 0;
         }
     }
-    public static ProductLINQ GetProductByIdWithLinq(long id)
+    public static ProductItem GetProductByIdWithLinq(long id)
     {
         ShopErDataContext db = new ShopErDataContext();
         try
         {
-            var product = db.ProductLINQs.FirstOrDefault(p => p.Id == id);
-            return product;
+            var prod = db.ProductLINQs.FirstOrDefault(p => p.Id == id);
+            //var product = new ProductItem() {Amount= prod.Amount, Description= prod.Description, Discount= Convert.ToInt32( prod.Discount), Featured = (bool)prod.Featured, Id= prod.Id, Name= prod.Name, Price= prod.Price, ShowOnPage= (bool)prod.ShowOnPage, SubCategoryId= prod.SubCategory };
+            //gjort en explicit cast för att kunna casta om Linq produkt objekt till productitems
+            return (ProductItem)prod;
         }
         catch (Exception)
         {
@@ -73,7 +84,7 @@ public class ProductManagerByLINQ : IProductManager
         }
     }
 
-    public bool UpdateProduct(ProductLINQ productToUpdate)
+    public bool UpdateProduct(ProductItem productToUpdate)
     {
         ShopErDataContext db = new ShopErDataContext();
         try
@@ -83,11 +94,11 @@ public class ProductManagerByLINQ : IProductManager
             pr.Price = productToUpdate.Price;
             pr.Amount = productToUpdate.Amount;
             pr.Description = productToUpdate.Description;
-            pr.Discount = productToUpdate.Discount;
+            pr.Discount = Convert.ToByte(productToUpdate.Discount);
             pr.Featured = productToUpdate.Featured;
             pr.ShowOnPage = productToUpdate.ShowOnPage;
-            pr.SubCategory = productToUpdate.SubCategory;
-            
+            pr.SubCategory = productToUpdate.SubCategoryId;
+
             db.SubmitChanges();
             return true;
         }
@@ -97,6 +108,29 @@ public class ProductManagerByLINQ : IProductManager
             throw;
         }
     }
-     }
+
+
+    #region IProductManager Members not being used
+
+
+    List<ProductItem> IProductManager.SearchProducts(string searchString)
+    {
+        throw new NotImplementedException();
+    }
+    public List<ProductItem> GetAllFeaturedProducts()
+    {
+        throw new NotImplementedException();
+    }
+    public List<ProductItem> GetAllProducts()
+    {
+        throw new NotImplementedException();
+    }
+
+    ProductItem IProductManager.GetProductById(int id)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
+}
     #endregion
 
