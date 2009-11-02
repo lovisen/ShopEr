@@ -3,6 +3,7 @@
 <%@ Register src="UserControls/Categories.ascx" tagname="Categories" tagprefix="uc1" %>
 <%@ Register src="~/userControls/LoginLogout.ascx" tagname="LoginLogout" tagprefix="uc2" %>
 <%@ Register src="~/userControls/ShoppingCart.ascx" tagname="ShoppingCart" tagprefix="uc3" %>
+<%@ Register src="~/userControls/Newsletter.ascx" tagname="Newsletter" tagprefix="uc4" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,10 +41,7 @@
             <uc1:Categories 
                 ID="Categories1" runat="server" />
             <br />
-            
-            <div style="background-image: url(images/meny.jpg);">Skicka ett nyhetesbrev till mig:<br /></div><br />
-            <asp:TextBox ID="txtNyhetesBrev" runat="server" Width="193px"></asp:TextBox>
-            <asp:Button ID="btnSend" runat="server" Text="Skicka" />
+            <uc4:Newsletter ID="Newsletter" runat="server" />
             <br /><br />
             <div style="background-image: url(images/meny.jpg);"><br /></div>
             
